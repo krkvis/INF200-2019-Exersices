@@ -8,9 +8,9 @@ import math
 
 def letter_freq(txt):
     """Take input string and count how many times each letter, digit and symbol is repeated.
-    :param txt: string that the function reads
-    :returns: dictionary with each character
-    in txt as keys, and how many times they are repeated as values.
+    :param txt: string that the function reads.
+    :returns: dictionary with each character in txt as keys,
+        and how many times they are repeated as values.
     """
     frequencies = dict()
     for element in txt:
@@ -23,8 +23,8 @@ def letter_freq(txt):
 
 def entropy(message):
     """Compute the entropy of input message from given formula.
-    :param message: string
-    :returns: entropy as number
+    :param message: string.
+    :returns: entropy as number.
     """
     occurrence_dict = letter_freq(message)
     n = len(message)
