@@ -9,16 +9,16 @@ def bubble_sort(data):
     :param data: list or tuple with numbers in random order.
     :returns: sorted list.
     """
-    copy = list(data)
-    n = len(copy)
+    list_to_sort = list(data)
+    n = len(list_to_sort)
     while n > 0:
         i = 1
         while i < n:
-            if copy[i] < copy[i - 1]:
-                copy[i], copy[i - 1] = copy[i - 1], copy[i]
+            if list_to_sort[i] < list_to_sort[i - 1]:
+                list_to_sort[i], list_to_sort[i - 1] = list_to_sort[i - 1], list_to_sort[i]
             i += 1
         n -= 1
-    return copy
+    return list_to_sort
 
 
 if __name__ == "__main__":
