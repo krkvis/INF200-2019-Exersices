@@ -8,7 +8,7 @@ def char_counts(textfilename):
     """Open file with the given filename, read the file content into a
         string, and count how often each character code occurs in the string.
         Return result as list.
-    :param textfilename: file with text which characters the function counts.
+    :param textfilename: file with text that the function reads.
     :return: list with number of occurrences of each character code (1-256)
         in textfilename.
     """
