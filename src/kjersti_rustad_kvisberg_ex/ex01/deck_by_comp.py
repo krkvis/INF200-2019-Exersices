@@ -27,7 +27,7 @@ def deck_comp():
         between 4 suits and 13 values.
     """
     return [(s, v) for s in SUITS for v in VALUES]
-    
+
 
 if __name__ == '__main__':
     if deck_loop() != deck_comp():
