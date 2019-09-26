@@ -5,8 +5,7 @@ __email__ = "kjkv@nmbu.no"
 
 
 def median(data):
-    """
-    Returns median of data.
+    """Returns median of data.
 
     :param data: An iterable of containing numbers
     :return: Median of data
@@ -25,14 +24,15 @@ def test_single():
     assert median([1]) == 1
 
 
-def test_odd_numbers():
+def test_odd_numbered():
+    """Tests that the median function returns the correct value for odd
+    numbered list.
     """
+    data = [3, 2, 1]
+    assert median(data) == 2
 
-    """
-    pass
 
-
-def test_even_numbers():
+def test_even_numbered():
     """
 
     """
