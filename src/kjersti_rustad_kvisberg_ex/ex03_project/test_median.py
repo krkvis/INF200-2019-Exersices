@@ -10,7 +10,6 @@ def median(data):
     :param data: An iterable of containing numbers
     :return: Median of data
     """
-
     sdata = sorted(data)
     n = len(sdata)
     return (sdata[n//2] if n % 2 == 1
@@ -50,21 +49,15 @@ def test_differently_ordered():
 
 
 def test_empty():
-    """
-
-    """
+    """Tests that the median function raises a ValueError for empty lists."""
     pass
 
 
 def test_original_unchanged():
-    """
-
-    """
+    """Tests that the median function leaves the original data unchanged."""
     pass
 
 
 def test_tuples():
-    """
-
-    """
+    """Tests that the median function works for tuples as well as lists."""
     pass
