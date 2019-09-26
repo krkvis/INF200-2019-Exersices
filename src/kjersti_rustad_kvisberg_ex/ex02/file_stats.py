@@ -21,7 +21,6 @@ def char_counts(textfilename):
 
 
 if __name__ == '__main__':
-
     filename = 'file_stats.py'
     frequencies = char_counts(filename)
     for code in range(256):

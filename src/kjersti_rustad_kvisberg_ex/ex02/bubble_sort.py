@@ -22,7 +22,6 @@ def bubble_sort(data):
 
 
 if __name__ == "__main__":
-
     for element in ((),
                     (1,),
                     (1, 3, 8, 12),
