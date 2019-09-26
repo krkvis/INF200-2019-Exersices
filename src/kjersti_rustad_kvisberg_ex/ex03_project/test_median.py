@@ -1,0 +1,67 @@
+# -*- coding: utf-8 -*-
+
+__author__ = "Kjersti Rustad Kvisberg"
+__email__ = "kjkv@nmbu.no"
+
+
+def median(data):
+    """
+    Returns median of data.
+
+    :param data: An iterable of containing numbers
+    :return: Median of data
+    """
+
+    sdata = sorted(data)
+    n = len(sdata)
+    return (sdata[n//2] if n % 2 == 1
+            else 0.5 * (sdata[n//2 - 1] + sdata[n//2]))
+
+
+def test_single():
+    """Tests that the median function returns the correct value for a single
+    element list.
+    """
+    assert median([1]) == 1
+
+
+def test_odd_numbers():
+    """
+
+    """
+    pass
+
+
+def test_even_numbers():
+    """
+
+    """
+    pass
+
+
+def test_different_orders():
+    """
+
+    """
+    pass
+
+
+def test_empty():
+    """
+
+    """
+    pass
+
+
+def test_original_unchanged():
+    """
+
+    """
+    pass
+
+
+def test_tuples():
+    """
+
+    """
+    pass
