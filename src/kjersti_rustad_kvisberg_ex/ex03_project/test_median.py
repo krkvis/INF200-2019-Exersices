@@ -28,8 +28,8 @@ def test_odd_numbered():
     """Tests that the median function returns the correct value for odd
     numbered list.
     """
-    data = [3, 2, 1]
-    assert median(data) == 2
+    data = [1, 2, 3, 4, 5]
+    assert median(data) == 3
 
 
 def test_even_numbered():
@@ -40,11 +40,13 @@ def test_even_numbered():
     assert median(data) == 2.5
 
 
-def test_different_orders():
+def test_differently_ordered():
+    """Tests that the median function returns the correct value for ordered,
+    reverse-ordered and unordered lists.
     """
-
-    """
-    pass
+    assert median([1, 2, 3]) == 2
+    assert median([3, 2, 1]) == 2
+    assert median([2, 3, 1]) == 2
 
 
 def test_empty():
