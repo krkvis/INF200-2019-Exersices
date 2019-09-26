@@ -33,10 +33,11 @@ def test_odd_numbered():
 
 
 def test_even_numbered():
+    """Tests that the median function returns the correct value for even
+    numbered list.
     """
-
-    """
-    pass
+    data = [2, 4, 1, 3]
+    assert median(data) == 2.5
 
 
 def test_different_orders():
