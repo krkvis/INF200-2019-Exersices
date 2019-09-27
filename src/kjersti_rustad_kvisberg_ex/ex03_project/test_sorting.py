@@ -42,7 +42,7 @@ def test_sorted_is_not_original():
 def test_original_unchanged():
     """Test that sorting leaves the original data unchanged."""
     data = [3, 2, 1]
-    sorted_data = bubble_sort(data)
+    bubble_sort(data)
     assert data == [3, 2, 1]
 
 
