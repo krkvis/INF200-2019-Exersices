@@ -8,7 +8,7 @@ import pytest
 
 def median(data):
     """Returns median of data.
-    Source: Yngve Mardal Moe
+    Source: "https://bit.ly/2n5qLs4"
 
     :param data: An iterable containing numbers
     :return: Median of data
