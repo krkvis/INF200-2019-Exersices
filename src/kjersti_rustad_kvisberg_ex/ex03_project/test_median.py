@@ -3,17 +3,23 @@
 __author__ = "Kjersti Rustad Kvisberg"
 __email__ = "kjkv@nmbu.no"
 
+import pytest
+
 
 def median(data):
     """Returns median of data.
+    Source: Yngve Mardal Moe
 
     :param data: An iterable containing numbers
     :return: Median of data
     """
     s_data = sorted(data)
     n = len(s_data)
-    return (s_data[n//2] if n % 2 == 1
-            else 0.5 * (s_data[n//2 - 1] + s_data[n//2]))
+    if n == 0:
+        raise ValueError
+    else:
+        return (s_data[n//2] if n % 2 == 1
+                else 0.5 * (s_data[n//2 - 1] + s_data[n//2]))
 
 
 def test_single():
@@ -50,7 +56,8 @@ def test_differently_ordered():
 
 def test_empty():
     """Tests that the median function raises a ValueError for empty lists."""
-    pass
+    with pytest.raises(ValueError):
+        median([])
 
 
 def test_original_unchanged():
