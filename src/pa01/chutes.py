@@ -1,2 +1,1 @@
-# Lol
-# Ja, jeg er enig.
+# 03.10.2019
