@@ -1,1 +1,2 @@
-Lol
+# Lol
+# Ja, jeg er enig.
