@@ -23,9 +23,7 @@ def check_position_on_ladder_or_snake(position):
         Players new position
     """
     ladders_and_snakes = {1: 40, 8: 10, 36: 52, 43: 62, 49: 79, 65: 82, 68: 85,
-                          24: 5, 33: 3, 42: 30, 56: 37, 64: 27, 74: 12, 87: 70
-                          }
-
+                          24: 5, 33: 3, 42: 30, 56: 37, 64: 27, 74: 12, 87: 70}
     if position in ladders_and_snakes.keys():
         return ladders_and_snakes[position]
     else:
@@ -63,7 +61,6 @@ def one_player_game():
         Number of moves needed for single player
         to finish one game.
     """
-
     player_position = 0
     num_moves = 0
     while player_position <= 90:
@@ -148,8 +145,8 @@ if __name__ == "__main__":
     number_of_players = 4
     seed_number = 99
     number_of_moves = multi_game_experiment(number_of_games,
-                                            number_of_players, seed_number
-                                            )
+                                            number_of_players, seed_number)
+
     print(f'The shortest game duration was {min(number_of_moves)} moves.\n'
           f'The longest game duration was {max(number_of_moves)} moves.\n'
           f'The median game duration was {st.median(number_of_moves)} moves.\n'
