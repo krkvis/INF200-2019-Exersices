@@ -37,8 +37,12 @@ def one_player_game():
     :return: Number of throws needed
     for one player to finish game
     """
-    pos = 0
-    pos += rd.randint(6)
+    player_position = 0
+    num_moves = 0
+    while player_position <= 90:
+        player_position = player_make_one_move(player_position)
+        num_moves += 1
+    return num_moves
 
 
 def single_game(num_players):
