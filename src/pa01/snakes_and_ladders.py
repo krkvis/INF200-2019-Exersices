@@ -9,9 +9,18 @@ import statistics as st
 
 def check_position_on_ladder_or_snake(position):
     """
+    Checks if the player has landed on a ladder or snake
+    and returns the new position accordingly.
 
-    :param position: Players position on game board
-    :return: New position
+    Parameters
+    ----------
+    position : int
+       Players position on game board
+
+    Returns
+    -------
+    position : int
+        Players new position
     """
     ladders_and_snakes = {1: 40, 8: 10, 36: 52, 43: 62, 49: 79, 65: 82, 68: 85,
                           24: 5, 33: 3, 42: 30, 56: 37, 64: 27, 74: 12, 87: 70
@@ -25,9 +34,18 @@ def check_position_on_ladder_or_snake(position):
 
 def player_make_one_move(position):
     """
+    Simulates die throw and adds it to
+    the current player position. Then uses the
+    check_position_on_ladder_or_snake function.
 
-    :param position: Players position on game board
-    :return: New position
+    Parameters
+    ----------
+    position: int
+        Players position
+
+    Returns
+    -------
+        Players new position
     """
     position += rd.randint(1, 6)
 
@@ -36,10 +54,16 @@ def player_make_one_move(position):
 
 def one_player_game():
     """
+    Simulates one game for a
+    single player.
 
-    :return: Number of throws needed
-    for one player to finish game
+    Returns
+    -------
+    num_moves : int
+        Number of moves needed for single player
+        to finish one game.
     """
+
     player_position = 0
     num_moves = 0
     while player_position <= 90:
@@ -126,8 +150,9 @@ if __name__ == "__main__":
     number_of_moves = multi_game_experiment(number_of_games,
                                             number_of_players, seed_number
                                             )
-    print(f'The shortest game duration was: {min(number_of_moves)}\n'
-          f'The longest game duration was: {max(number_of_moves)}\n'
-          f'The median game duration was: {st.median(number_of_moves)}\n'
-          f'The mean game duration was: {st.mean(number_of_moves)}\n'
-          f'The standard deviation was: {round(st.stdev(number_of_moves),2)}')
+    print(f'The shortest game duration was {min(number_of_moves)} moves.\n'
+          f'The longest game duration was {max(number_of_moves)} moves.\n'
+          f'The median game duration was {st.median(number_of_moves)} moves.\n'
+          f'The mean game duration was {st.mean(number_of_moves)} moves '
+          f'with a standard deviation of '
+          f'{round(st.stdev(number_of_moves), 2)}.')
