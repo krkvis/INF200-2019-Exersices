@@ -67,6 +67,7 @@ def single_game(num_players):
 
     return min(moves_per_player)
 
+
 def multiple_games(num_games, num_players):
     """
     Returns durations of a number of games.
@@ -109,6 +110,11 @@ def multi_game_experiment(num_games, num_players, seed):
     num_moves : list
         List with the number of moves needed in each game.
     """
+    rd.seed(seed)
+ 
+    return multiple_games(num_games, num_players)
+
+
 
 
 if __name__ == "__main__":
