@@ -15,6 +15,7 @@ def check_position_on_ladder_or_snake(position):
     ladders_and_snakes = {1:40, 8:10, 36:52, 43:62, 49:79, 65:82, 68:85,
                           24:5, 33:3, 42:30, 56:37, 64:27, 74:12, 87:70
                           }
+
     if position in ladders_and_snakes.keys():
         return ladders_and_snakes[position]
     else:
@@ -27,7 +28,7 @@ def player_make_one_move(position):
     :param position: Players position on game board
     :return: New position
     """
-    position += rd.randint(6)
+    position += rd.randint(1, 6)
     return check_position_on_ladder_or_snake(position)
 
 
@@ -100,4 +101,3 @@ def multi_game_experiment(num_games, num_players, seed):
 
 
 if __name__ == "__main__":
-
