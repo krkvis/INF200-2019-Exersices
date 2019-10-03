@@ -6,19 +6,30 @@ __email__ = "idna@nmbu.no, kjkv@nmbu.no"
 import random as rd
 
 
-def player_make_one_move(position):
-    """
-
-    :param position: Players position on game board
-    :return: New position
-    """
-
 def check_position_on_ladder_or_snake(position):
     """
 
     :param position: Players position on game board
     :return: New position
     """
+    ladders_and_snakes = {1:40, 8:10, 36:52, 43:62, 49:79, 65:82, 68:85,
+                          24:5, 33:3, 42:30, 56:37, 64:27, 74:12, 87:70
+                          }
+    if position in ladders_and_snakes.keys():
+        return ladders_and_snakes[position]
+    else:
+        return position
+
+
+def player_make_one_move(position):
+    """
+
+    :param position: Players position on game board
+    :return: New position
+    """
+    position += rd.randint(6)
+    return check_position_on_ladder_or_snake(position)
+
 
 def one_player_game():
     """
@@ -28,8 +39,6 @@ def one_player_game():
     """
     pos = 0
     pos += rd.randint(6)
-
-
 
 
 def single_game(num_players):
@@ -82,7 +91,7 @@ def multi_game_experiment(num_games, num_players, seed):
     Returns
     -------
     num_moves : list
-        List with the numbedr of moves needed in each game.
+        List with the number of moves needed in each game.
     """
 
 
