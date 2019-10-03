@@ -60,7 +60,12 @@ def single_game(num_players):
     num_moves : int
         Number of moves the winning player needed to reach the goal
     """
+    moves_per_player = []
+    for player in range(num_players):
+        num_moves = one_player_game()
+        moves_per_player.append(num_moves)
 
+    return min(moves_per_player)
 
 def multiple_games(num_games, num_players):
     """
@@ -76,8 +81,14 @@ def multiple_games(num_games, num_players):
     Returns
     -------
     num_moves : list
-        List with the numbedr of moves needed in each game.
+        List with the numbers of moves needed in each game.
     """
+    moves_per_game = []
+    for game in range(num_games):
+        moves_per_game.append(single_game(num_players))
+
+    return moves_per_game
+
 
 
 def multi_game_experiment(num_games, num_players, seed):
