@@ -35,5 +35,12 @@ class Walker:
 
 
 if __name__ == '__main__':
-    Ida = Walker(0, 2)
-    print(Ida.walking_process())
+    home_positions = [1, 2, 5, 10, 20, 50, 100]
+    num_simulations = 5
+    initial_position = 0
+    for home in home_positions:
+        path_lengths = []
+        for _ in range(num_simulations):
+            walker = Walker(initial_position, home)
+            path_lengths.append(walker.walking_process())
+        print(f'Distance: {home:3} -> Path lengths: {path_lengths}')
