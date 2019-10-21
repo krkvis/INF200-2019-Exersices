@@ -31,3 +31,11 @@ class ListRand:
 
 
 if __name__ == '__main__':
+    LCG_generator = LCGRand(1)
+    print(LCG_generator.rand())
+    print(LCG_generator.rand())
+
+    numbers_list = [1, 12, 5, 19, 2, 7, 16]
+    list_generator = ListRand(numbers_list)
+    print(list_generator.rand())
+    print(list_generator.rand())
