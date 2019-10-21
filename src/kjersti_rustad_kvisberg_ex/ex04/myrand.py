@@ -15,6 +15,7 @@ class LCGRand:
         self.seed = random_number
         return random_number
 
+
 class ListRand:
     def __init__(self):
         pass
