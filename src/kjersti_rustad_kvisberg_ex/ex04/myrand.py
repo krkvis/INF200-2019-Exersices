@@ -17,8 +17,11 @@ class LCGRand:
 
 
 class ListRand:
-    def __init__(self):
-        pass
+    def __init__(self, numbers):
+        self.numbers = numbers
 
     def rand(self):
         pass
+
+
+if __name__ == '__main__':
