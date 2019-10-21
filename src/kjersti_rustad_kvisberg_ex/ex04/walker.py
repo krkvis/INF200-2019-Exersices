@@ -9,12 +9,18 @@ import random as rand
 class Walker:
     def __init__(self, x0, h):
         """
-
+        Initialises Walker class with given parameters.
 
         Parameters
         ----------
-        x0
-        h
+        x0: int
+            The walker's initial position.
+        h: int
+            The walker's home and thus final position.
+        x: int
+            The walker's position.
+        steps: int
+            Number of steps the walker has taken.
         """
         self.h = h
         self.x = x0
@@ -22,11 +28,8 @@ class Walker:
 
     def move(self):
         """
-
-
-        Returns
-        -------
-
+        The walker takes a step to the right or to the left, and the walkers
+        position and number of steps is updated accordingly.
         """
         if rand.randint(0, 1) == 0:
             self.x -= 1
@@ -36,41 +39,42 @@ class Walker:
 
     def is_at_home(self):
         """
-
-
-        Returns
-        -------
-
+        Checks if the walker is at home yet. Returns True if the walker is at
+        home, and False if not.
         """
         return Walker.get_position(self) == self.h
 
     def get_position(self):
         """
-
+        Returns current position of the walker.
 
         Returns
         -------
-
+        x: int
+            The walker's position.
         """
         return self.x
 
     def get_steps(self):
         """
-
+        Returns the number of steps the walker has taken.
 
         Returns
         -------
-
+        steps: int
+            The number of steps the walker has taken to get to current
+            position.
         """
         return self.steps
 
     def walking_process(self):
         """
-
+        Checks if the walker is home yet, and makes a move if not.
 
         Returns
         -------
-
+        steps: int
+            Number of steps the walker has taken to reach home position.
         """
         while Walker.is_at_home(self) is False:
             Walker.move(self)
