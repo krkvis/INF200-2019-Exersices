@@ -7,6 +7,9 @@ import random as rand
 
 
 class Walker:
+    """Simulates a walker in a one-dimensional world's way home.
+    """
+
     def __init__(self, x0, h):
         """
         Initialises Walker class with given parameters.
@@ -28,7 +31,8 @@ class Walker:
 
     def move(self):
         """
-        The walker takes a step to the right or to the left, and the walkers
+        The walker takes one step to the right or to the left,
+        as determined by drawing a random number 0 or 1. The walker's
         position and number of steps is updated accordingly.
         """
         if rand.randint(0, 1) == 0:
@@ -39,7 +43,7 @@ class Walker:
 
     def is_at_home(self):
         """
-        Checks if the walker is at home yet. Returns True if the walker is at
+        Checks if the walker is home yet. Returns True if the walker is at
         home, and False if not.
         """
         return Walker.get_position(self) == self.h
@@ -57,7 +61,7 @@ class Walker:
 
     def get_steps(self):
         """
-        Returns the number of steps the walker has taken.
+        Returns the number of steps the walker has taken in total.
 
         Returns
         -------
