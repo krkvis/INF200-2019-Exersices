@@ -14,3 +14,10 @@ class LCGRand:
         random_number = self.a * self.seed % self.m
         self.seed = random_number
         return random_number
+
+class ListRand:
+    def __init__(self):
+        pass
+
+    def rand(self):
+        pass
