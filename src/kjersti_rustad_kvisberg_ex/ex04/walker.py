@@ -20,13 +20,20 @@ class Walker:
         self.steps += 1
 
     def is_at_home(self):
-        return self.x == self.h
+        return Walker.get_position(self) == self.h
 
-    def get_postition(self):
+    def get_position(self):
         return self.x
 
     def get_steps(self):
-        pass
+        return self.steps
 
-    def waking_process(self):
-        pass
+    def walking_process(self):
+        while Walker.is_at_home(self) is False:
+            Walker.move(self)
+        return Walker.get_steps(self)
+
+
+if __name__ == '__main__':
+    Ida = Walker(0, 2)
+    print(Ida.walking_process())
