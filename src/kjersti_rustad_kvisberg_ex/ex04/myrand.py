@@ -17,11 +17,17 @@ class LCGRand:
 
 
 class ListRand:
-    def __init__(self, numbers):
-        self.numbers = numbers
+    def __init__(self, list_of_numbers):
+        self.numbers = list_of_numbers
+        self.counter = 0
 
     def rand(self):
-        pass
+        if self.counter == len(self.numbers):
+            raise RuntimeError
+        else:
+            random_number = self.numbers[self.counter]
+            self.counter += 1
+            return random_number
 
 
 if __name__ == '__main__':
