@@ -7,23 +7,29 @@ import random as rand
 
 
 class Walker:
-    """Simulates a walker in a one-dimensional world's way home.
+    """Simulates the way home of a walker in a one-dimensional world.
+
+    Attributes
+    ----------
+    x : int
+        The walker's position.
+    steps : int
+        The number of steps the walker has taken to get to current position.
+    h : int
+        The walker's home position.
     """
 
     def __init__(self, x0, h):
         """
-        Initialises Walker class with given parameters.
+        Initialises Walker class with given parameters. The walker is at a
+        position 'x' after taking 'steps' number of steps.
 
         Parameters
         ----------
-        x0: int
+        x0 : int
             The walker's initial position.
-        h: int
+        h : int
             The walker's home and thus final position.
-        x: int
-            The walker's position.
-        steps: int
-            Number of steps the walker has taken.
         """
         self.h = h
         self.x = x0
@@ -31,7 +37,7 @@ class Walker:
 
     def move(self):
         """
-        The walker takes one step to the right or to the left,
+        The walker takes one step to the left or to the right,
         as determined by drawing a random number 0 or 1. The walker's
         position and number of steps is updated accordingly.
         """
@@ -43,8 +49,11 @@ class Walker:
 
     def is_at_home(self):
         """
-        Checks if the walker is home yet. Returns True if the walker is at
-        home, and False if not.
+        Checks if the walker is home yet.
+
+        Returns
+        -------
+        bool : True if walker is at home, False if not.
         """
         return Walker.get_position(self) == self.h
 
@@ -54,7 +63,7 @@ class Walker:
 
         Returns
         -------
-        x: int
+        x : int
             The walker's position.
         """
         return self.x
@@ -65,7 +74,7 @@ class Walker:
 
         Returns
         -------
-        steps: int
+        steps : int
             The number of steps the walker has taken to get to current
             position.
         """
@@ -77,8 +86,7 @@ class Walker:
 
         Returns
         -------
-        steps: int
-            Number of steps the walker has taken to reach home position.
+        int : Number of steps the walker has taken to reach home position.
         """
         while Walker.is_at_home(self) is False:
             Walker.move(self)
@@ -90,8 +98,8 @@ if __name__ == '__main__':
     num_simulations = 5
     initial_position = 0
     for home in home_positions:
-        path_lengths = []
+        num_steps = []
         for _ in range(num_simulations):
             walker = Walker(initial_position, home)
-            path_lengths.append(walker.walking_process())
-        print(f'Distance: {home:3} -> Path lengths: {path_lengths}')
+            num_steps.append(walker.walking_process())
+        print(f'Distance: {home:3} -> Path lengths: {sorted(num_steps)}')
