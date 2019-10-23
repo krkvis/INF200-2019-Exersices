@@ -5,23 +5,21 @@ __email__ = "kjkv@nmbu.no"
 
 
 class LCGRand:
+    """Implements a linear congruential generator to return random numbers."""
     def __init__(self, seed):
-        """
-        Initialises the class with given constants a and m.
+        """Initialises the class with given constants a and m.
 
         Parameters
         ----------
         seed: int
-            The seed that the LCG bases the generating on.
+            The seed that the generating is based on.
         """
         self.seed = seed
         self.a = 7**5
         self.m = 2**31 - 1
 
     def rand(self):
-        """
-        Uses a linear congruential generator to generate a random number based
-        on a seed given by user.
+        """Generates a random number based on a seed given by the user.
 
         Returns
         -------
@@ -34,6 +32,7 @@ class LCGRand:
 
 
 class ListRand:
+    """Generates random numbers based on a list of numbers."""
     def __init__(self, list_of_numbers):
         """
         Initialises the class with list given by user and a counter.
@@ -41,24 +40,24 @@ class ListRand:
         Parameters
         ----------
         list_of_numbers: list
-            List of numbers that will be returned one by one as random numbers.
+            List of numbers that will be returned, one by one.
         """
-        self.numbers = list_of_numbers
+        self.numbers_list = list(list_of_numbers)
         self.counter = 0
 
     def rand(self):
         """
-        Returns random numbers from a list given by user.
+        Returns a number from the list.
 
         Returns
         -------
         random_number: int
             A random number drawn from the input list.
         """
-        if self.counter == len(self.numbers):
+        if self.counter == len(self.numbers_list):
             raise RuntimeError
         else:
-            random_number = self.numbers[self.counter]
+            random_number = self.numbers_list[self.counter]
             self.counter += 1
             return random_number
 
