@@ -23,6 +23,7 @@ def test_lcg():
 
 def test_list_rng():
     """Test that ListRNG generator works."""
+
     numbers = [4, 5, 29, 11]
     lr = ListRand(numbers)
     assert [lr.rand() for _ in range(len(numbers))] == numbers

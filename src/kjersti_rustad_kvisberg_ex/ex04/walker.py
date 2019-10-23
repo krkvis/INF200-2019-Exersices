@@ -12,13 +12,10 @@ class Walker:
     Attributes
     ----------
     x : int
-        The walker's position.
+        The walker's current position.
     steps : int
         The number of steps the walker has taken to get to current position.
-    h : int
-        The walker's home position.
     """
-
     def __init__(self, x0, h):
         """
         Initialises Walker class with given parameters. The walker is at a
@@ -53,7 +50,8 @@ class Walker:
 
         Returns
         -------
-        bool : True if walker is at home, False if not.
+        bool
+            True if walker is at home, False if not.
         """
         return Walker.get_position(self) == self.h
 
@@ -70,13 +68,13 @@ class Walker:
 
     def get_steps(self):
         """
-        Returns the number of steps the walker has taken in total.
+        Returns the number of steps the walker has taken in total to get to
+        current position.
 
         Returns
         -------
         steps : int
-            The number of steps the walker has taken to get to current
-            position.
+            Number of steps the walker has taken.
         """
         return self.steps
 
@@ -86,7 +84,8 @@ class Walker:
 
         Returns
         -------
-        int : Number of steps the walker has taken to reach home position.
+        steps : int
+            Number of steps the walker has taken to reach home position.
         """
         while Walker.is_at_home(self) is False:
             Walker.move(self)

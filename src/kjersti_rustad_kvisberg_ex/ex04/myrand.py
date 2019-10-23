@@ -5,7 +5,8 @@ __email__ = "kjkv@nmbu.no"
 
 
 class LCGRand:
-    """Implements a linear congruential generator to return random numbers.
+    """Implementation of a linear congruential generator
+    that returns random numbers.
 
     Attributes
     ----------
@@ -40,7 +41,7 @@ class LCGRand:
 
 
 class ListRand:
-    """Generates random numbers based on a list of numbers.
+    """Generates random numbers from a list of numbers.
 
     Attributes
     ----------
