@@ -48,7 +48,7 @@ class ListRand:
     counter : int
         Number of numbers that have been returned from the list.
     """
-    def __init__(self, list_of_numbers):
+    def __init__(self, list_of_numbers: list):
         """
         Initialises the class with list given by user and a counter.
 
@@ -57,7 +57,7 @@ class ListRand:
         list_of_numbers : list
             List of numbers that will be returned, one by one.
         """
-        self.numbers_list = list(list_of_numbers)
+        self.numbers_list = list_of_numbers
         self.counter = 0
 
     def rand(self):
