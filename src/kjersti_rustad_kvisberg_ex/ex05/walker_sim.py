@@ -150,7 +150,6 @@ if __name__ == '__main__':
     print(walking_sim.run_simulation(1))
     print(walking_sim.single_walk())
 
-
     num_sim = 20
     start_pos = [0, 0, 0, 10, 10, 10]
     home_pos = [10, 10, 10, 0, 0, 0]
