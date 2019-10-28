@@ -44,8 +44,7 @@ class LCGRand:
         return self._hidden_state
 
     def random_sequence(self, length):
-        rand_iter = iter(RandIter(self, length))
-        return next(rand_iter)
+        return RandIter(self, length)
 
     def infinite_random_sequence(self):
         """
