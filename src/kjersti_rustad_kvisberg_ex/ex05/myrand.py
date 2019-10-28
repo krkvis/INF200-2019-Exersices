@@ -44,7 +44,20 @@ class LCGRand:
         return self._hidden_state
 
     def random_sequence(self, length):
-        return RandIter(self, length)
+        randiter = iter(RandIter(self, length))
+        return next(randiter)
+
+    def infinite_random_sequence(self):
+        """
+        Generate an infinite sequence of random numbers.
+
+        Yields
+        ------
+        int
+            A random number.
+        """
+        pass
+        # yield index, random_number
 
 
 class RandIter:
@@ -54,7 +67,7 @@ class RandIter:
         Arguments
         ---------
         random_number_generator :
-            A random number generator with a "rand" method that
+            A random number generator with a ``rand`` method that
             takes no arguments and returns a random number.
         length : int
             The number of random numbers to generate.
@@ -118,4 +131,12 @@ class RandIter:
 if __name__ == '__main__':
     LCG_generator = LCGRand(1)
     print(LCG_generator.rand())
-    print(LCG_generator.rand())
+    print(LCG_generator.random_sequence(3))
+    print(LCG_generator.random_sequence(2))
+
+    r = RandIter(random.randint, 3)
+    iter(r)
+    print(next(r))
+    print(next(r))
+    print(next(r))
+
