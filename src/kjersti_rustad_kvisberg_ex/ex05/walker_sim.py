@@ -136,7 +136,10 @@ class Simulation:
         list[int]
             List with the number of steps per walk
         """
-
+        list_of_steps = []
+        for _ in range(num_walks):
+            list_of_steps.append(Simulation.single_walk(self))
+        
 
 if __name__ == '__main__':
     home_positions = [1, 2, 5, 10, 20, 50, 100]
