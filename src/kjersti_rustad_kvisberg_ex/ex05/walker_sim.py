@@ -16,7 +16,7 @@ class Walker:
     steps : int
         The number of steps the walker has taken to get to current position.
     """
-    def __init__(self, start, home):
+    def __init__(self, start, home, seed):
         """
         Initialises Walker class with given parameters. The walker is at a
         position 'position' after taking 'steps' number of steps.
@@ -27,10 +27,13 @@ class Walker:
             The walker's initial position.
         home : int
             The walker's home and thus final position.
+        seed : int
+            Random generator seed.
         """
         self.home = home
         self.position = start
         self.steps = 0
+        self.seed = seed
 
     def move(self):
         """
@@ -38,6 +41,7 @@ class Walker:
         as determined by drawing a random number 0 or 1. The walker's
         position and number of steps is updated accordingly.
         """
+        random.seed(self.seed)
         if random.randint(0, 1) == 0:
             self.position -= 1
         else:
@@ -106,10 +110,7 @@ class Simulation:
         seed : int
             Random generator seed
         """
-        self.start = start
-        self.home = home
-        self.seed = seed
-        self.walker = Walker(self.start, self.home)
+        self.walker = Walker(start, home, seed)
 
     def single_walk(self):
         """
@@ -139,7 +140,8 @@ class Simulation:
         list_of_steps = []
         for _ in range(num_walks):
             list_of_steps.append(Simulation.single_walk(self))
-        
+        return list_of_steps
+
 
 if __name__ == '__main__':
     home_positions = [1, 2, 5, 10, 20, 50, 100]
