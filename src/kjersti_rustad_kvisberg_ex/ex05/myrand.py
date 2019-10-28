@@ -3,6 +3,8 @@
 __author__ = "Kjersti Rustad Kvisberg"
 __email__ = "kjkv@nmbu.no"
 
+import random
+
 
 class LCGRand:
     """Implementation of a linear congruential generator
@@ -52,10 +54,10 @@ class RandIter:
         Arguments
         ---------
         random_number_generator :
-            A random number generator with a ``rand`` method that
+            A random number generator with a "rand" method that
             takes no arguments and returns a random number.
         length : int
-            The number of random numbers to generate
+            The number of random numbers to generate.
         """
         self.generator = random_number_generator
         self.length = length
@@ -74,7 +76,12 @@ class RandIter:
         RuntimeError
             If iter is called twice on the same RandIter object.
         """
-        pass
+        if self.num_generated_numbers is not None:
+            raise RuntimeError(
+                'Object can only be initialised as an iterator once.'
+            )
+        self.num_generated_numbers = 0
+        return self
 
     def __next__(self):
         """
@@ -91,7 +98,21 @@ class RandIter:
             If the ``__next__`` method is called before ``__iter__``.
         StopIteration
             If ``self.length`` random numbers are generated.
-        pass
+        """
+        if self.num_generated_numbers is None:
+            raise RuntimeError(
+                'Cannot call "next" before the object is'
+                'initialised as an iterator.'
+            )
+
+        if self.num_generated_numbers == self.length:
+            raise StopIteration(
+                'The given amount of random numbers have been generated.'
+            )
+
+        self.num_generated_numbers += 1
+
+        return self.generator
 
 
 if __name__ == '__main__':
