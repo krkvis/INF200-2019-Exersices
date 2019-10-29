@@ -57,7 +57,7 @@ class Walker:
         bool
             True if walker is at home, False if not.
         """
-        return Walker.get_position(self) == self.home
+        return self.get_position() == self.home
 
     def get_position(self):
         """
@@ -91,9 +91,9 @@ class Walker:
         steps : int
             Number of steps the walker has taken to reach home position.
         """
-        while Walker.is_at_home(self) is False:
-            Walker.move(self)
-        return Walker.get_steps(self)
+        while self.is_at_home() is False:
+            self.move()
+        return self.get_steps()
 
 
 class Simulation:
@@ -139,7 +139,7 @@ class Simulation:
         """
         list_of_steps = []
         for _ in range(num_walks):
-            list_of_steps.append(Simulation.single_walk(self))
+            list_of_steps.append(self.single_walk())
         return list_of_steps
 
 
