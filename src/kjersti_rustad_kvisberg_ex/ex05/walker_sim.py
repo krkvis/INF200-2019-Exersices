@@ -16,7 +16,7 @@ class Walker:
     steps : int
         The number of steps the walker has taken to get to current position.
     """
-    def __init__(self, start, home, seed=None):
+    def __init__(self, start, home, seed):
         """
         Initialises Walker class with given parameters. The walker is at a
         position 'position' after taking 'steps' number of steps.
@@ -144,20 +144,20 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    walking = Walker(0, 8, 90)
+    walking = Walker(0, 8, 1)
     print(walking.walking_process())
-    walking_sim = Simulation(0, 8, 90)
-    print(walking_sim.run_simulation(1))
-    print(walking_sim.single_walk())
+    # walking_sim = Simulation(0, 8, 90)
+    # print(walking_sim.run_simulation(1))
+    # print(walking_sim.single_walk())
 
-    num_sim = 20
-    start_pos = [0, 0, 0, 10, 10, 10]
-    home_pos = [10, 10, 10, 0, 0, 0]
-    seed = [12345, 12345, 54321, 12345, 12345, 54321]
-    #for i in range(6):
-        #walker_sim = Simulation(start_pos[i], home_pos[i], seed[i])
-        #print(start_pos[i], home_pos[i], seed[i])
-        #print(walker_sim.run_simulation(num_sim))
+    # num_sim = 20
+    # start_pos = [0, 0, 0, 10, 10, 10]
+    # home_pos = [10, 10, 10, 0, 0, 0]
+    # seed = [12345, 12345, 54321, 12345, 12345, 54321]
+    # for i in range(6):
+        # walker_sim = Simulation(start_pos[i], home_pos[i], seed[i])
+        # print(start_pos[i], home_pos[i], seed[i])
+        # print(walker_sim.run_simulation(num_sim))
 
-    #print(f'Distance: {home_position:3} -> '
+    # print(f'Distance: {home_position:3} -> '
     #     f'Path lengths: {sorted(num_steps)}')
