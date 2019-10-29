@@ -132,11 +132,11 @@ if __name__ == '__main__':
     num_sim = 20
     start_pos = [0, 0, 0, 10, 10, 10]
     home_pos = [10, 10, 10, 0, 0, 0]
-    seed = [12345, 12345, 54321, 12345, 12345, 54321]
+    seed_val = [12345, 12345, 54321, 12345, 12345, 54321]
     for i in range(6):
-        walker_sim = Simulation(start_pos[i], home_pos[i], seed[i])
+        walker_sim = Simulation(start_pos[i], home_pos[i], seed_val[i])
         print(f'Start position: {start_pos[i]:3}, '
               f'Home position: {home_pos[i]}, '
-              f'Seed: {seed[i]},\n'
+              f'Seed: {seed_val[i]},\n'
               f'Lengths of walks: {walker_sim.run_simulation(num_sim)}'
               )
