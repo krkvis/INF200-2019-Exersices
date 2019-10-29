@@ -72,7 +72,7 @@ class RandIter:
         length : int
             The number of random numbers to generate.
         """
-        self.generator = random_number_generator
+        self.generator = random_number_generator.rand()
         self.length = length
         self.num_generated_numbers = None
 
