@@ -72,7 +72,7 @@ class RandIter:
         length : int
             The number of random numbers to generate.
         """
-        self.generator = random_number_generator.rand()
+        self.generator = random_number_generator.rand
         self.length = length
         self.num_generated_numbers = None
 
@@ -123,27 +123,22 @@ class RandIter:
                 'The given amount of random numbers have been generated.'
             )
 
+        num = self.generator()
         self.num_generated_numbers += 1
 
-        return self.generator()
+        return num
 
 
 if __name__ == '__main__':
-    LCG_gen = LCGRand(2)
-    print(LCG_gen.rand())
-    print(LCG_gen.random_sequence(3))
-    print(LCG_gen.random_sequence(2))
+    # LCG_gen = LCGRand(1)
+    # print(LCG_gen.rand())
+    # print(LCG_gen.random_sequence(3))
 
-    rand_gen = RandIter(LCG_gen.rand, 3)
+
+    rand_gen = RandIter(LCGRand(1), 3)
     iter(rand_gen)
     print(next(rand_gen))
     print(next(rand_gen))
-
-    # r = RandIter(LCG_gen.rand(),3)
-    # iter(r)
-    # print(next(r))
-    # print(next(r))
-    # print(next(r))
 
     # random_number_generator = LCGRand(1)
     # for rand in random_number_generator.random_sequence(10):
