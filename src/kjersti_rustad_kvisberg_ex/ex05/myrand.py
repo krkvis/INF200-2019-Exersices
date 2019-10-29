@@ -54,14 +54,9 @@ class LCGRand:
         ------
         self.rand() : int
             A random number.
-        index : int
-            Index.
         """
-        pass
-        index = 0
         while True:
-            yield index, self.rand()
-            index += 1
+            yield self.rand()
 
 
 class RandIter:
@@ -137,7 +132,7 @@ if __name__ == '__main__':
     for rand in rand_numb_generator.random_sequence(10):
         print(rand)
 
-    for i, rand in rand_numb_generator.infinite_random_sequence():
+    for i, rand in enumerate(rand_numb_generator.infinite_random_sequence()):
         print(f'The {i}-th random number is {rand}')
         if i > 100:
             break
