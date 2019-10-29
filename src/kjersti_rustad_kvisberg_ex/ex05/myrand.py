@@ -52,11 +52,16 @@ class LCGRand:
 
         Yields
         ------
-        int
+        self.rand() : int
             A random number.
+        index : int
+            Index.
         """
         pass
-        # yield index, random_number
+        index = 0
+        while True:
+            yield index, self.rand()
+            index += 1
 
 
 class RandIter:
@@ -128,12 +133,11 @@ class RandIter:
 
 
 if __name__ == '__main__':
-    random_number_generator = LCGRand(1)
-    for rand in random_number_generator.random_sequence(10):
+    rand_numb_generator = LCGRand(1)
+    for rand in rand_numb_generator.random_sequence(10):
         print(rand)
 
-    # for i, rand in random_number_generator.infinite_random_sequence():
-    #    print(f'The {i}-th random number is {rand}')
-    #   if i > 100:
-    #       break
-
+    for i, rand in rand_numb_generator.infinite_random_sequence():
+        print(f'The {i}-th random number is {rand}')
+        if i > 100:
+            break
