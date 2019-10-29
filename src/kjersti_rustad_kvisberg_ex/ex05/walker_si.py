@@ -81,19 +81,6 @@ class Walker:
         """
         return self.steps
 
-    def walking_process(self):
-        """
-        Checks if the walker is home yet, and makes a move if not.
-
-        Returns
-        -------
-        steps : int
-            Number of steps the walker has taken to reach home position.
-        """
-        while self.is_at_home() is False:
-            self.move()
-        return self.get_steps()
-
 
 class Simulation:
     def __init__(self, start, home, seed):
@@ -119,9 +106,11 @@ class Simulation:
         Returns
         -------
         int
-            The number of steps taken
+            The number of steps taken to reach home position.
         """
-        return self.walker.walking_process()
+        while self.walker.is_at_home() is False:
+            self.walker.move()
+        return self.walker.get_steps()
 
     def run_simulation(self, num_walks):
         """
@@ -137,27 +126,18 @@ class Simulation:
         list[int]
             List with the number of steps per walk
         """
-        list_of_steps = []
-        for _ in range(num_walks):
-            list_of_steps.append(self.single_walk())
-        return list_of_steps
+        return [self.single_walk() for _ in range(num_walks)]
 
 
 if __name__ == '__main__':
-    walking = Walker(0, 8)
-    print(walking.walking_process())
-    walking_sim = Simulation(0, 8, 5)
-    print(walking_sim.run_simulation(5))
-    print(walking_sim.single_walk())
-
-    # num_sim = 20
-    # start_pos = [0, 0, 0, 10, 10, 10]
-    # home_pos = [10, 10, 10, 0, 0, 0]
-    # seed = [12345, 12345, 54321, 12345, 12345, 54321]
-    # for i in range(6):
-        # walker_sim = Simulation(start_pos[i], home_pos[i], seed[i])
-        # print(start_pos[i], home_pos[i], seed[i])
-        # print(walker_sim.run_simulation(num_sim))
-
-    # print(f'Distance: {home_position:3} -> '
-    #     f'Path lengths: {sorted(num_steps)}')
+    num_sim = 20
+    start_pos = [0, 0, 0, 10, 10, 10]
+    home_pos = [10, 10, 10, 0, 0, 0]
+    seed = [12345, 12345, 54321, 12345, 12345, 54321]
+    for i in range(6):
+        walker_sim = Simulation(start_pos[i], home_pos[i], seed[i])
+        print(f'Start position: {start_pos[i]:3}, '
+              f'Home position: {home_pos[i]}, '
+              f'Seed: {seed[i]},\n'
+              f'Lengths of walks: {walker_sim.run_simulation(num_sim)}'
+        )
