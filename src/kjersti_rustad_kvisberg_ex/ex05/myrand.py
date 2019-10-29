@@ -17,9 +17,6 @@ class LCGRand:
     congruence_class : int
         Constant given in ex. text, necessary for generation.
     """
-    slope = 7**5
-    congruence_class = 2**31 - 1
-
     def __init__(self, seed):
         """Initialises the class with given constants
         slope and congruence_class.
@@ -30,6 +27,8 @@ class LCGRand:
             The seed that the generating is based on.
         """
         self._hidden_state = seed
+        self.slope = 7**5
+        self.congruence_class = 2**31 - 1
 
     def rand(self):
         """Generates a single random number based on a seed given by the user.
@@ -129,19 +128,9 @@ class RandIter:
 
 
 if __name__ == '__main__':
-    # LCG_gen = LCGRand(1)
-    # print(LCG_gen.rand())
-    # print(LCG_gen.random_sequence(3))
-
-
-    rand_gen = RandIter(LCGRand(1), 3)
-    iter(rand_gen)
-    print(next(rand_gen))
-    print(next(rand_gen))
-
-    # random_number_generator = LCGRand(1)
-    # for rand in random_number_generator.random_sequence(10):
-    #   print(rand)
+    random_number_generator = LCGRand(1)
+    for rand in random_number_generator.random_sequence(10):
+        print(rand)
 
     # for i, rand in random_number_generator.infinite_random_sequence():
     #    print(f'The {i}-th random number is {rand}')
