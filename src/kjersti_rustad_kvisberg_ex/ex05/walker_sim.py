@@ -40,7 +40,6 @@ class Walker:
         as determined by drawing a random number 0 or 1. The walker's
         position and number of steps is updated accordingly.
         """
-        # random.seed(self.seed)
         if random.randint(0, 1) == 0:
             self.position -= 1
         else:
