@@ -56,3 +56,6 @@ class BoundedSimulation(Simulation):
         self.right_limit = right_limit
 
         super().__init__(self.start, self.home, self.seed)
+
+if __name__ == '__main__':
+    
