@@ -21,7 +21,8 @@ class LCGRand:
     congruence_class = 2**31 - 1
 
     def __init__(self, seed):
-        """Initialises the class with given constants a and m.
+        """Initialises the class with given constants
+        slope and congruence_class.
 
         Parameters
         ----------
@@ -124,18 +125,32 @@ class RandIter:
 
         self.num_generated_numbers += 1
 
-        return self.generator
+        return self.generator()
 
 
 if __name__ == '__main__':
-    LCG_generator = LCGRand(1)
-    print(LCG_generator.rand())
-    print(LCG_generator.random_sequence(3))
-    print(LCG_generator.random_sequence(2))
+    LCG_gen = LCGRand(2)
+    print(LCG_gen.rand())
+    print(LCG_gen.random_sequence(3))
+    print(LCG_gen.random_sequence(2))
 
-    r = RandIter(random.randint, 3)
-    iter(r)
-    print(next(r))
-    print(next(r))
-    print(next(r))
+    rand_gen = RandIter(LCG_gen.rand, 3)
+    iter(rand_gen)
+    print(next(rand_gen))
+    print(next(rand_gen))
+
+    # r = RandIter(LCG_gen.rand(),3)
+    # iter(r)
+    # print(next(r))
+    # print(next(r))
+    # print(next(r))
+
+    # random_number_generator = LCGRand(1)
+    # for rand in random_number_generator.random_sequence(10):
+    #   print(rand)
+
+    # for i, rand in random_number_generator.infinite_random_sequence():
+    #    print(f'The {i}-th random number is {rand}')
+    #   if i > 100:
+    #       break
 
