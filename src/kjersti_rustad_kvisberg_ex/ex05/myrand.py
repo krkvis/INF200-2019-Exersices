@@ -128,11 +128,11 @@ class RandIter:
 
 
 if __name__ == '__main__':
-    rand_numb_generator = LCGRand(1)
-    for rand in rand_numb_generator.random_sequence(10):
+    rand_num_generator = LCGRand(1)
+    for rand in rand_num_generator.random_sequence(10):
         print(rand)
 
-    for i, rand in enumerate(rand_numb_generator.infinite_random_sequence()):
+    for i, rand in enumerate(rand_num_generator.infinite_random_sequence()):
         print(f'The {i}-th random number is {rand}')
         if i > 100:
             break

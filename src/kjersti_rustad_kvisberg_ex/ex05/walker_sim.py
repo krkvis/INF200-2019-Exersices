@@ -139,4 +139,4 @@ if __name__ == '__main__':
               f'Home position: {home_pos[i]}, '
               f'Seed: {seed[i]},\n'
               f'Lengths of walks: {walker_sim.run_simulation(num_sim)}'
-        )
+              )
