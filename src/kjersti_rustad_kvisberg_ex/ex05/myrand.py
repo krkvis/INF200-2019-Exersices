@@ -3,8 +3,6 @@
 __author__ = "Kjersti Rustad Kvisberg"
 __email__ = "kjkv@nmbu.no"
 
-import random
-
 
 class LCGRand:
     """Implementation of a linear congruential generator
