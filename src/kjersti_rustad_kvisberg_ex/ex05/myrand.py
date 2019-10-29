@@ -123,10 +123,9 @@ class RandIter:
                 'The given amount of random numbers have been generated.'
             )
 
-        num = self.generator()
         self.num_generated_numbers += 1
 
-        return num
+        return self.generator()
 
 
 if __name__ == '__main__':
