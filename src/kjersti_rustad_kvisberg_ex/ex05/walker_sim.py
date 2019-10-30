@@ -7,19 +7,18 @@ import random
 
 
 class Walker:
-    """Simulates the way home of a walker in a one-dimensional world.
-
-    Attributes
-    ----------
-    position : int
-        The walker's current position.
-    steps : int
-        The number of steps the walker has taken to get to current position.
-    """
+    """Contains methods needed to simulate the way home of a walker
+    in a one-dimensional world."""
     def __init__(self, start, home):
-        """
-        Initialises Walker class with given parameters. The walker is at a
-        position 'position' after taking 'steps' number of steps.
+        """Initialise the class.
+
+        Attributes
+        ----------
+        position : int
+            The walker's current position.
+        steps : int
+            The number of steps the walker has taken to get to current
+            position.
 
         Parameters
         ----------
@@ -27,28 +26,22 @@ class Walker:
             The walker's initial position.
         home : int
             The walker's home and thus final position.
-        # seed : int
-        #    Random generator seed.
         """
         self.home = home
+        self.start = start
         self.position = start
         self.steps = 0
 
     def move(self):
-        """
-        The walker takes one step to the left or to the right,
+        """The walker takes one step to the left or to the right,
         as determined by drawing a random number 0 or 1. The walker's
         position and number of steps is updated accordingly.
         """
-        if random.randint(0, 1) == 0:
-            self.position -= 1
-        else:
-            self.position += 1
+        self.position += random.randint(0, 1) * 2 - 1
         self.steps += 1
 
     def is_at_home(self):
-        """
-        Checks if the walker is home yet.
+        """Checks if the walker is home yet.
 
         Returns
         -------
@@ -58,8 +51,7 @@ class Walker:
         return self.get_position() == self.home
 
     def get_position(self):
-        """
-        Returns current position of the walker.
+        """Returns current position of the walker.
 
         Returns
         -------
@@ -69,8 +61,7 @@ class Walker:
         return self.position
 
     def get_steps(self):
-        """
-        Returns the number of steps the walker has taken in total to get to
+        """Returns the number of steps the walker has taken in total to get to
         current position.
 
         Returns
@@ -80,11 +71,17 @@ class Walker:
         """
         return self.steps
 
+    def reset(self):
+        """Resets the walker's position to the start position,
+        so the walker can be used again.
+        """
+        self.position = self.start
+
 
 class Simulation:
+    """Simulates the way home of walkers in a one-dimensional world."""
     def __init__(self, start, home, seed):
-        """
-        Initialise the simulation
+        """Initialise the simulation.
 
         Parameters
         ---------
@@ -99,8 +96,7 @@ class Simulation:
         self.walker = Walker(start, home)
 
     def single_walk(self):
-        """
-        Simulate single walk from start to home, returning number of steps.
+        """Simulate single walk from start to home, returning number of steps.
 
         Returns
         -------
@@ -112,8 +108,7 @@ class Simulation:
         return self.walker.get_steps()
 
     def run_simulation(self, num_walks):
-        """
-        Run a set of walks, returns list of number of steps taken.
+        """Run a set of walks, returns list of number of steps taken for each.
 
         Parameters
         ---------
