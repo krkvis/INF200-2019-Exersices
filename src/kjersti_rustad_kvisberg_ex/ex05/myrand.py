@@ -14,10 +14,6 @@ class LCGRand:
 
         Attributes
         ----------
-        slope : int
-            Constant given in ex. text, necessary for generation.
-        congruence_class : int
-            Constant given in ex. text, necessary for generation.
         random_number : int
             The generated number.
 
