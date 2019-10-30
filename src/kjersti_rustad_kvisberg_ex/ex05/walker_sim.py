@@ -98,6 +98,7 @@ class Simulation:
 
     def single_walk(self):
         """Simulate single walk from start to home, returning number of steps.
+        Uses methods from Walker class.
 
         Returns
         -------
