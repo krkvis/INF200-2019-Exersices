@@ -12,14 +12,6 @@ class Walker:
     def __init__(self, start, home):
         """Initialise the class.
 
-        Attributes
-        ----------
-        position : int
-            The walker's current position.
-        steps : int
-            The number of steps the walker has taken to get to current
-            position.
-
         Parameters
         ----------
         start : int
