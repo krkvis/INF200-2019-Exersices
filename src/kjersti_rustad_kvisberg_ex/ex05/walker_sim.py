@@ -92,9 +92,9 @@ class Simulation:
         seed : int
             Random generator seed
         """
-        self.seed = random.seed(seed)
         self.start = start
         self.home = home
+        random.seed(seed)
 
     def single_walk(self):
         """Simulate single walk from start to home, returning number of steps.
