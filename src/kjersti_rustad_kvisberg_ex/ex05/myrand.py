@@ -12,11 +12,6 @@ class LCGRand:
         """Initialise the class with given constants
         slope and congruence_class.
 
-        Attributes
-        ----------
-        random_number : int
-            The generated number.
-
         Parameters
         ----------
         seed : int
@@ -58,13 +53,6 @@ class RandIter:
     """A random number iterator class."""
     def __init__(self, random_number_generator, length):
         """Initialise the class.
-
-        Attributes
-        ----------
-        generator : method
-            Takes no arguments and returns a random number.
-        num_generated_numbers : int
-            Number of numbers the class has returned.
 
         Arguments
         ---------
