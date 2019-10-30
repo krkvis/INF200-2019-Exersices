@@ -7,46 +7,47 @@ __email__ = "kjkv@nmbu.no"
 class LCGRand:
     """Implementation of a linear congruential generator
     that returns random numbers.
-
-    Attributes
-    ----------
-    slope : int
-        Constant given in ex. text, necessary for generation.
-    congruence_class : int
-        Constant given in ex. text, necessary for generation.
     """
     def __init__(self, seed):
-        """Initialises the class with given constants
+        """Initialise the class with given constants
         slope and congruence_class.
+
+        Attributes
+        ----------
+        slope : int
+            Constant given in ex. text, necessary for generation.
+        congruence_class : int
+            Constant given in ex. text, necessary for generation.
+        random_number : int
+            The generated number.
 
         Parameters
         ----------
         seed : int
             The seed that the generating is based on.
         """
-        self._hidden_state = seed
+        self.random_number = seed
         self.slope = 7**5
         self.congruence_class = 2**31 - 1
 
     def rand(self):
-        """Generates a single random number based on a seed given by the user.
+        """Generate a single random number based on a seed given by the user.
 
         Returns
         -------
         random_number : int
             The generated number.
         """
-        self._hidden_state *= self.slope
-        self._hidden_state %= self.congruence_class
+        self.random_number *= self.slope
+        self.random_number %= self.congruence_class
 
-        return self._hidden_state
+        return self.random_number
 
     def random_sequence(self, length):
         return RandIter(self, length)
 
     def infinite_random_sequence(self):
-        """
-        Generate an infinite sequence of random numbers.
+        """Generate an infinite sequence of random numbers.
 
         Yields
         ------
@@ -58,8 +59,16 @@ class LCGRand:
 
 
 class RandIter:
+    """A random number iterator class."""
     def __init__(self, random_number_generator, length):
-        """
+        """Initialise the class.
+
+        Attributes
+        ----------
+        generator : method
+            Takes no arguments and returns a random number.
+        num_generated_numbers : int
+            Number of numbers the class has returned.
 
         Arguments
         ---------
@@ -74,8 +83,7 @@ class RandIter:
         self.num_generated_numbers = None
 
     def __iter__(self):
-        """
-        Initialise the iterator.
+        """Initialise the iterator.
 
         Returns
         -------
@@ -94,8 +102,7 @@ class RandIter:
         return self
 
     def __next__(self):
-        """
-        Generate the next random number.
+        """Generate the next random number.
 
         Returns
         -------
