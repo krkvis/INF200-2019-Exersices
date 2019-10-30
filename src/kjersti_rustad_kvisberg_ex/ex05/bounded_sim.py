@@ -4,7 +4,7 @@ __author__ = "Kjersti Rustad Kvisberg"
 __email__ = "kjkv@nmbu.no"
 
 import random
-from .walker_sim import Walker, Simulation
+from walker_sim import Walker, Simulation
 
 
 class BoundedWalker(Walker):
@@ -73,10 +73,12 @@ class BoundedSimulation(Simulation):
         self.seed = random.seed(seed)
         self.left_limit = left_limit
         self.right_limit = right_limit
+        self.walker = BoundedWalker(start, home, left_limit, right_limit)
 
         super().__init__(self.start, self.home, self.seed)
 
 
 if __name__ == '__main__':
-    walking_person = Walker(0, 5)
+    walking_person = BoundedWalker(0, 5, -1000, 1000)
     position = walking_person.get_position()
+    print(position, walking_person.steps)
