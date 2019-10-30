@@ -8,9 +8,12 @@ from .walker_sim import Walker, Simulation
 
 
 class BoundedWalker(Walker):
+    """Contains methods needed to simulate the way home of a walker
+    in a one-dimensional world. The walker can not move further
+    to the left or right than the given limits.
+    """
     def __init__(self, start, home, left_limit, right_limit):
-        """
-        Initialise the walker
+        """Initialise the walker.
 
         Arguments
         ---------
@@ -31,8 +34,7 @@ class BoundedWalker(Walker):
         super().__init__(start, home)
 
     def move(self):
-        """
-        The walker takes one step to the left or to the right,
+        """The walker takes one step to the left or to the right,
         as determined by drawing a random number 0 or 1. The walker's
         position and number of steps is updated accordingly. If walker reaches
         left or right limit, the move is not executed.
@@ -48,9 +50,10 @@ class BoundedWalker(Walker):
 
 
 class BoundedSimulation(Simulation):
+    """Simulates the way home of walkers in a one-dimensional world
+    with boundaries."""
     def __init__(self, start, home, seed, left_limit, right_limit):
-        """
-        Initialise the simulation
+        """Initialise the simulation.
 
         Arguments
         ---------
