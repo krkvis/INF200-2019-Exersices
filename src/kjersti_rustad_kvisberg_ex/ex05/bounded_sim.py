@@ -64,9 +64,9 @@ class BoundedSimulation(Simulation):
         seed : int
             Random generator seed
         left_limit : int
-            The left boundary of walker movement
+            The left boundary of the walker's movement
         right_limit : int
-            The right boundary  of walker movement
+            The right boundary of the walker's movement
         """
         self.start = start
         self.home = home
