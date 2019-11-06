@@ -4,8 +4,19 @@ __author__ = "Ida Lunde Naalsund, Kjersti Rustad Kvisberg"
 __email__ = "idna@nmbu.no, kjkv@nmbu.no"
 
 class Board:
-    def __init__(self):
-        pass
+    def __init__(self, ladders=None, chutes=None, goal=None):
+        if ladders & chutes & goal is None:
+            self.ladders = [(2, 7), (12, 21), (43, 47), (71, 80)]
+            self.chutes = [(83, 60), (71, 66), (55, 48), (21, 10)]
+            self.goal = 100
+        else:
+            self.ladders = ladders
+            self.chutes = chutes
+            self.goal = goal
+            
+
+
+
 
     def goal_reached(self):
         pass
