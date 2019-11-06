@@ -4,3 +4,4 @@ __author__ = "Kjersti Rustad Kvisberg"
 __email__ = "kjkv@nmbu.no"
 
 print('Hello World')
+import random
