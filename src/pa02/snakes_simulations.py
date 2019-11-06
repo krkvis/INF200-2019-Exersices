@@ -13,16 +13,12 @@ class Board:
             self.ladders = ladders
             self.chutes = chutes
             self.goal = goal
-            
 
+    def goal_reached(self, position):
+        return True
 
-
-
-    def goal_reached(self):
-        pass
-
-    def position_adjustment(self):
-        pass
+    def position_adjustment(self, position):
+        return position
 
 
 class Player:
