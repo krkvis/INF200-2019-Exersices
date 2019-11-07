@@ -7,7 +7,7 @@ import random
 
 
 class Board:
-    def __init__(self, ladders=None, chutes=None, goal=None):
+    def __init__(self, ladders=None, chutes=None, goal=90):
         self.ladders = ladders
         self.chutes = chutes
         self.goal = goal
