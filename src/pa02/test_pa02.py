@@ -34,6 +34,21 @@ class TestBoard:
         assert b.position_adjustment(8) == -5
         assert b.position_adjustment(6) == 0
 
+class TestPlayer:
+    def test_constructor(self):
+        """Checks that class is initialized with position zero."""
+        b = ss.Board()
+        p = ss.Player(b)
+        assert p.position == 0
 
-
-
+    def test_move(self):
+        """Checks that position has been changed, is not less than one,
+        and not at the bottom of a ladder or top of a chute."""
+        b = ss.Board(ladders=[(3, 7)], chutes=[(6, 5)])
+        p = ss.Player(b)
+        position = 2
+        p.move()
+        assert p.position != position
+        assert p.position >= 1
+        assert p.position != 3
+        assert p.position != 6
