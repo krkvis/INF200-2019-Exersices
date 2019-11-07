@@ -3,6 +3,8 @@
 __author__ = "Ida Lunde Naalsund, Kjersti Rustad Kvisberg"
 __email__ = "idna@nmbu.no, kjkv@nmbu.no"
 
+import random
+
 
 class Board:
     def __init__(self, ladders=None, chutes=None, goal=None):
@@ -19,51 +21,59 @@ class Board:
 
 class Player:
     def __init__(self, board):
-        pass
+        self.board = board
+        self.position = 0
 
     def move(self):
-        pass
+        self.position += 1
 
 
 class ResilientPlayer(Player):
-    def __init__(self):
-        super().__init__(self, board)
-        pass
+    def __init__(self, board, extra_steps=1):
+        super().__init__(board)
+        self.extra_steps = extra_steps
 
     def move(self):
-        pass
+        self.position += 1
 
 
 class LazyPlayer(Player):
-    def __init__(self):
-        super().__init__(self, board)
-        pass
+    def __init__(self, board, dropped_steps=1):
+        super().__init__(board)
+        self.dropped_steps = dropped_steps
 
     def move(self):
-        pass
+        self.position += 1
 
 
 class Simulation:
-    def __init__(self, board, seed, bool_flag, players):
-        pass
+    def __init__(self, player_field, board=Board(), seed=4,
+                 randomize_players=True):
+        self.player_field = player_field
+        self.board = board
+        random.seed(seed)
+        self.randomize_players = randomize_players
+        self.results = []
 
     def single_game(self):
-        pass
+        return(1, 'Player')
 
     def run_simulation(self, num_games):
-        pass
+        for _ in num_games:
+            self.results.append(self.single_game())
 
     def get_results(self):
-        pass
+        return self.results
 
     def winner_per_type(self):
-        pass
+        return {'Player': 1, 'ResilientPlayer': 1, 'LazyPlayer': 1}
 
     def durations_per_type(self):
-        pass
+        return {'Player': [1, 2, 3, 4], 'ResilientPlayer': [1, 2, 3, 4], 'LazyPlayer': [1, 2, 3, 4]}
 
     def players_per_type(self):
-        pass
+        return {'Player': 1, 'ResilientPlayer': 1, 'LazyPlayer': 1}
+
 
 
 if __name__ == '__main__':
