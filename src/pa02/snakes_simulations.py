@@ -51,17 +51,29 @@ class Player:
         self.position = 0
 
     def move(self):
+        """Updates players position with roll of die and potential move
+        up ladder or down chute."""
         self.position += random.randint(1,6)
         self.position += self.board.position_adjustment(self.position)
 
 
 class ResilientPlayer(Player):
     def __init__(self, board, extra_steps=1):
+        """Initializes a player with given board and extra steps."""
         super().__init__(board)
         self.extra_steps = extra_steps
+        self.fell_down_a_chute = False
 
     def move(self):
-        self.position += 1
+        """Updates players position with roll of die, potential extra steps
+         from last move and and potential move up ladder or down chute."""
+        self.position += random.randint(1,6)
+        if self.fell_down_a_chute is True:
+            self.position += self.extra_steps
+        pos_adj = self.board.position_adjustment(self.position)
+        if pos_adj <= 0:
+            self.fell_down_a_chute = True
+        self.position += pos_adj
 
 
 class LazyPlayer(Player):
