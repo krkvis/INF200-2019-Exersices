@@ -8,6 +8,7 @@ import random
 
 class Board:
     def __init__(self, ladders=None, chutes=None, goal=90):
+        """Initializes board with default values"""
         self.goal = goal
         if ladders is None:
             self.ladders = [
@@ -20,12 +21,27 @@ class Board:
             self.chutes = [
                 (24, 5), (42, 30), (56, 37), (64, 27), (74, 12), (87, 70)
             ]
+        else:
+            self.chutes = chutes
 
     def goal_reached(self, position):
-        return True
+        """Returns True when player has reached or passed goal,
+        False otherwise."""
+        return position >= self.goal
 
     def position_adjustment(self, position):
-        return position
+        """Returns number of steps player must climb or fall when he encounters
+        a ladder or chute. Zero is returned when player is in a position
+        without ladders or chutes."""
+        for ladder in self.ladders:
+            if position == ladder[0]:
+                return ladder[1] - ladder[0]
+
+        for chute in self.chutes:
+            if position == chute[0]:
+                return chute[1] - chute[0]
+
+        return 0
 
 
 class Player:
