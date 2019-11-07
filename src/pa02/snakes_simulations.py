@@ -8,9 +8,18 @@ import random
 
 class Board:
     def __init__(self, ladders=None, chutes=None, goal=90):
-        self.ladders = ladders
-        self.chutes = chutes
         self.goal = goal
+        if ladders is None:
+            self.ladders = [
+                (1, 40), (8, 10), (36, 52), (49, 79), (65, 82), (68, 85)
+            ]
+        else:
+            self.ladders = ladders
+
+        if chutes is None:
+            self.chutes = [
+                (24, 5), (42, 30), (56, 37), (64, 27), (74, 12), (87, 70)
+            ]
 
     def goal_reached(self, position):
         return True
