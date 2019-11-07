@@ -2,10 +2,9 @@
 import snakes_simulations as ss
 import pytest
 
+
 class TestBoard:
-    """
-    Tests for Board class.
-    """
+    """Tests for Board class."""
 
     def test_constructor_default(self):
         """Default constructor callable."""
