@@ -46,11 +46,13 @@ class Board:
 
 class Player:
     def __init__(self, board):
+        """Initializes a player with given board."""
         self.board = board
         self.position = 0
 
     def move(self):
-        self.position += 1
+        self.position += random.randint(1,6)
+        self.position += self.board.position_adjustment(self.position)
 
 
 class ResilientPlayer(Player):
