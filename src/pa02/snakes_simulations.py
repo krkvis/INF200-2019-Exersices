@@ -19,10 +19,11 @@ class Board:
 
 class Player:
     def __init__(self, board):
-        pass
+        self.board = board
+        self.position = 0
 
     def move(self):
-        pass
+        self.position += 1
 
 
 class ResilientPlayer(Player):
