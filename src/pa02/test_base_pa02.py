@@ -11,6 +11,7 @@ __email__ = 'hans.ekkehard.plesser@nmbu.no'
 import snakes_simulations as ss
 import pytest
 
+
 class TestBoard:
     """
     Tests for Board class.
