@@ -7,7 +7,7 @@ import random
 
 
 class Board:
-    def __init__(self, ladders=None, chutes=None, goal=None):
+    def __init__(self, ladders=None, chutes=None, goal=90):
         self.ladders = ladders
         self.chutes = chutes
         self.goal = goal
@@ -59,13 +59,13 @@ class Simulation:
         return(1, 'Player')
 
     def run_simulation(self, num_games):
-        for _ in num_games:
+        for _ in range(num_games):
             self.results.append(self.single_game())
 
     def get_results(self):
         return self.results
 
-    def winner_per_type(self):
+    def winners_per_type(self):
         return {'Player': 1, 'ResilientPlayer': 1, 'LazyPlayer': 1}
 
     def durations_per_type(self):
