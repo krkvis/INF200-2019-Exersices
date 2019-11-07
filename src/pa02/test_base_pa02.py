@@ -29,7 +29,9 @@ class TestBoard:
 
     def test_constructor_named_args(self):
         """Constructor with kw args callable."""
-        b = ss.Board(ladders=[(1, 4), (5, 16)], chutes=[(9, 2), (12, 3)], goal=90)
+        b = ss.Board(
+            ladders=[(1, 4), (5, 16)], chutes=[(9, 2), (12, 3)], goal=90
+        )
         assert isinstance(b, ss.Board)
 
     def test_goal_reached(self):
