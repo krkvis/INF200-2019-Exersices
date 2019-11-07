@@ -3,6 +3,7 @@
 __author__ = "Ida Lunde Naalsund, Kjersti Rustad Kvisberg"
 __email__ = "idna@nmbu.no, kjkv@nmbu.no"
 
+
 class Board:
     def __init__(self, ladders=None, chutes=None, goal=None):
         if ladders & chutes & goal is None:
@@ -68,5 +69,3 @@ class Simulation:
 
     def players_per_type(self):
         pass
-
-    
