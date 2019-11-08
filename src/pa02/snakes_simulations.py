@@ -87,6 +87,8 @@ class LazyPlayer(Player):
         self.climbed_ladder = False
 
     def move(self):
+        """Updates players position with roll of die, potential dropped steps
+        from last move and and potential move up ladder or down chute."""
         die_throw = random.randint(1, 6)
 
         if self.climbed_ladder is True and self.dropped_steps < die_throw:
