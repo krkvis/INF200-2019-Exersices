@@ -84,9 +84,22 @@ class LazyPlayer(Player):
         steps"""
         super().__init__(board)
         self.dropped_steps = dropped_steps
+        self.climbed_ladder = False
 
     def move(self):
-        self.position += 1
+        die_throw = random.randint(1, 6)
+
+        if self.climbed_ladder is True and self.dropped_steps < die_throw:
+            self.position += (die_throw - self.dropped_steps)
+        elif self.climbed_ladder is False:
+            self.position += die_throw
+
+        pos_adj = self.board.position_adjustment(self.position)
+        if pos_adj >= 0:
+            self.climbed_ladder = True
+        else:
+            self.climbed_ladder = False
+        self.position += pos_adj
 
 
 class Simulation:
