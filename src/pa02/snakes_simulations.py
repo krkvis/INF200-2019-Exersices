@@ -67,12 +67,14 @@ class ResilientPlayer(Player):
     def move(self):
         """Updates players position with roll of die, potential extra steps
          from last move and and potential move up ladder or down chute."""
-        self.position += random.randint(1,6)
+        self.position += random.randint(1, 6)
         if self.fell_down_a_chute is True:
             self.position += self.extra_steps
         pos_adj = self.board.position_adjustment(self.position)
         if pos_adj <= 0:
             self.fell_down_a_chute = True
+        else:
+            self.fell_down_a_chute = False
         self.position += pos_adj
 
 
