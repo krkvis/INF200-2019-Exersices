@@ -49,13 +49,13 @@ class Player:
         """Initializes a player with given board."""
         self.board = board
         self.position = 0
+        self.num_moves = 0
 
     def move(self):
         """Updates players position with roll of die and potential move
         up ladder or down chute."""
-        self.position += random.randint(1,6)
+        self.position += random.randint(1, 6)
         self.position += self.board.position_adjustment(self.position)
-
 
 class ResilientPlayer(Player):
     def __init__(self, board, extra_steps=1):
@@ -113,8 +113,11 @@ class Simulation:
         self.randomize_players = randomize_players
         self.results = []
 
+    def play_round(self):
+        """Plays one round for all players."""
+
     def single_game(self):
-        return(1, 'Player')
+        return 1, 'Player'
 
     def run_simulation(self, num_games):
         for _ in range(num_games):
@@ -135,5 +138,5 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    board = Board()
-    print(board.ladders)
+    playing_board = Board()
+    print(playing_board.ladders)
