@@ -107,14 +107,21 @@ class LazyPlayer(Player):
 class Simulation:
     def __init__(self, player_field, board=Board(), seed=4,
                  randomize_players=True):
+        """Initializes Simulation class with given arguments."""
         self.player_field = player_field
         self.board = board
         random.seed(seed)
         self.randomize_players = randomize_players
         self.results = []
 
+    def setup_game(self):
+        self.player_instances = [player() for player in self.player_field]
+
     def play_round(self):
         """Plays one round for all players."""
+        for player in self.player_field:
+            player.move()
+            player.num_moves += 1
 
     def single_game(self):
         return 1, 'Player'
