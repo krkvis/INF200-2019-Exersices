@@ -80,6 +80,8 @@ class ResilientPlayer(Player):
 
 class LazyPlayer(Player):
     def __init__(self, board, dropped_steps=1):
+        """Initializes player with a given board and number of dropped
+        steps"""
         super().__init__(board)
         self.dropped_steps = dropped_steps
 
