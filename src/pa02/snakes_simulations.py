@@ -115,7 +115,7 @@ class Simulation:
         self.randomize_players = randomize_players
         self.results = []
         self.winning_player = None
-        self.player_instances = None
+        self.player_instances = []
 
     def setup_game(self):
         """Sets up game by creating player instances and shuffling the order"""
@@ -141,11 +141,8 @@ class Simulation:
                     return (self.winning_player.num_moves,
                             type(self.winning_player).__name__)
 
-
-
-
-
     def run_simulation(self, num_games):
+        """Runs a given number of games and stores the results."""
         for _ in range(num_games):
             self.results.append(self.single_game())
 

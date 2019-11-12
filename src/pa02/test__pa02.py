@@ -117,3 +117,13 @@ class TestSimulation:
                           board=b, seed=123, randomize_players=True)
         s.single_game()
         assert b.goal_reached(s.winning_player.position) is True
+
+    def test_run_simulation(self):
+        pass
+
+    def test_get_results(self):
+        s = ss.Simulation(player_field=[ss.Player, ss.Player],
+                          board=ss.Board(), seed=123, randomize_players=True)
+        s.run_simulation(2)
+        assert type(s.get_results()) == list
+        assert s.get_results()[0] == tuple
