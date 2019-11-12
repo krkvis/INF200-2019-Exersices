@@ -115,10 +115,14 @@ class Simulation:
         self.randomize_players = randomize_players
         self.results = []
         self.winning_player = None
+        self.player_instances = None
 
     def setup_game(self):
+        """Sets up game by creating player instances and shuffling the order"""
         self.player_instances = [player(self.board) for player in
                                  self.player_field]
+        if self.randomize_players:
+            self.player_instances = random.shuffle(self.player_instances)
 
     def play_round(self):
         """Plays one round for all players."""
