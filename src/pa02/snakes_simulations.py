@@ -115,11 +115,12 @@ class Simulation:
         self.results = []
 
     def setup_game(self):
-        self.player_instances = [player() for player in self.player_field]
+        self.player_instances = [player(self.board) for player in
+                                 self.player_field]
 
     def play_round(self):
         """Plays one round for all players."""
-        for player in self.player_field:
+        for player in self.player_instances:
             player.move()
             player.num_moves += 1
 
