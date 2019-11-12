@@ -119,10 +119,12 @@ class Simulation:
 
     def setup_game(self):
         """Sets up game by creating player instances and shuffling the order"""
+
+        if self.randomize_players is True:
+            random.shuffle(self.player_field)
         self.player_instances = [player(self.board) for player in
                                  self.player_field]
-        if self.randomize_players:
-            self.player_instances = random.shuffle(self.player_instances)
+        print(self.player_instances)
 
     def play_round(self):
         """Plays one round for all players."""
@@ -164,3 +166,7 @@ class Simulation:
 if __name__ == '__main__':
     playing_board = Board()
     print(playing_board.ladders)
+
+    sim = Simulation(player_field=[Player, Player],
+                          board=Board(), seed=123, randomize_players=True)
+    sim.setup_game()
