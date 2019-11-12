@@ -119,10 +119,11 @@ class Simulation:
 
     def setup_game(self):
         """Sets up game by creating player instances and shuffling the order"""
+
+        if self.randomize_players is True:
+            random.shuffle(self.player_field)
         self.player_instances = [player(self.board) for player in
                                  self.player_field]
-        if self.randomize_players:
-            self.player_instances = random.shuffle(self.player_instances)
 
     def play_round(self):
         """Plays one round for all players."""
@@ -150,7 +151,13 @@ class Simulation:
         return self.results
 
     def winners_per_type(self):
-        return {'Player': 1, 'ResilientPlayer': 1, 'LazyPlayer': 1}
+        winner_stats = {}
+        for result in self.get_results():
+            if result[1] not in winner_stats.keys():
+                winner_stats[result[1]] = 1
+            else:
+                winner_stats[result[1]] += 1
+        return winner_stats
 
     def durations_per_type(self):
         return {'Player': [1, 2, 3, 4], 'ResilientPlayer': [1, 2, 3, 4],
@@ -162,5 +169,23 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    playing_board = Board()
-    print(playing_board.ladders)
+
+    sim = Simulation(player_field=[Player, Player, ResilientPlayer],
+                          board=Board(), seed=123, randomize_players=True)
+
+    print(sim.single_game())
+
+
+
+  #  sim.play_round()
+  #  for player in sim.player_instances:
+  #      print(player)
+  #      print(player.num_moves)
+  #      print(type(player).__name__)
+  #      print(player.position)
+
+
+
+
+
+

@@ -126,4 +126,4 @@ class TestSimulation:
                           board=ss.Board(), seed=123, randomize_players=True)
         s.run_simulation(2)
         assert type(s.get_results()) == list
-        assert s.get_results()[0] == tuple
+        assert type(s.get_results()[0]) == tuple
