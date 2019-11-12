@@ -129,15 +129,14 @@ class Simulation:
     def single_game(self):
         """Plays single game"""
         self.setup_game()
-        i = 100
-        while i > 1:
+        while True:
             self.play_round()
             for player in self.player_instances:
                 if self.board.goal_reached(player.position) is True:
                     self.winning_player = player
-                    break
-        return (self.winning_player.num_moves,
-                type(self.winning_player).__name__)
+                    return (self.winning_player.num_moves,
+                            type(self.winning_player).__name__)
+
 
 
 
