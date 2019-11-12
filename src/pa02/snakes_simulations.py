@@ -169,26 +169,26 @@ class Simulation:
         return duration_stats
 
     def players_per_type(self):
-        return {'Player': 1, 'ResilientPlayer': 1, 'LazyPlayer': 1}
-
+        player_stats = {}
+        for player in self.player_field:
+            if player.__name__ not in player_stats.keys():
+                player_stats[player.__name__] = 1
+            else:
+                player_stats[player.__name__] += 1
+        return player_stats
 
 
 if __name__ == '__main__':
 
-    sim = Simulation(player_field=[Player, Player, ResilientPlayer],
-                          board=Board(), seed=123, randomize_players=True)
+    sim = Simulation(
+        player_field=[Player, Player, ResilientPlayer],
+        board=Board(), seed=123, randomize_players=True
+    )
 
-    print(sim.single_game())
-
-
-
-  #  sim.play_round()
-  #  for player in sim.player_instances:
-  #      print(player)
-  #      print(player.num_moves)
-  #      print(type(player).__name__)
-  #      print(player.position)
-
+    sim.run_simulation(10)
+    print(sim.winners_per_type())
+    print(sim.durations_per_type())
+    print(sim.players_per_type())
 
 
 
