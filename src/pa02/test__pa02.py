@@ -133,7 +133,7 @@ class TestSimulation:
         s = ss.Simulation(player_field=[ss.Player, ss.Player],
                           board=b, seed=123, randomize_players=True)
         s.single_game()
-        assert b.goal_reached(s.winning_player.position) is True
+        assert b.goal_reached(s.winning_player.position)
 
     def test_get_results(self):
         """Tests that results are returned as lists, where each element is a
