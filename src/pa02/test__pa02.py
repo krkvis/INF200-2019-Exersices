@@ -11,6 +11,9 @@ import snakes_simulations as ss
 
 
 class TestBoard:
+    """
+    Tests for Board class.
+    """
     def test_constructor(self):
         """Constructor with kw args assigns correct attribute values."""
         b = ss.Board()
@@ -36,6 +39,9 @@ class TestBoard:
 
 
 class TestPlayer:
+    """
+    Tests for Player class.
+    """
     def test_constructor(self):
         """Checks that class is initialized with position zero."""
         b = ss.Board()
@@ -56,6 +62,9 @@ class TestPlayer:
 
 
 class TestResilientPlayer:
+    """
+    Tests for ResilientPlayer class.
+    """
     def test_constructor(self):
         """Checks that class is initialized with position zero."""
         b = ss.Board()
@@ -76,6 +85,9 @@ class TestResilientPlayer:
 
 
 class TestLazyPlayer:
+    """
+    Tests for LazyPlayer class.
+    """
     def test_constructor(self):
         """Checks that class is initialized with position zero."""
         b = ss.Board()
@@ -96,6 +108,9 @@ class TestLazyPlayer:
 
 
 class TestSimulation:
+    """
+    Tests for Simulation class.
+    """
     def test_constructor_args(self):
         """Constructor with only two kw args works."""
         s = ss.Simulation(player_field=[ss.Player, ss.Player],
