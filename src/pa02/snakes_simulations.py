@@ -124,7 +124,6 @@ class Simulation:
             random.shuffle(self.player_field)
         self.player_instances = [player(self.board) for player in
                                  self.player_field]
-        print(self.player_instances)
 
     def play_round(self):
         """Plays one round for all players."""
@@ -170,9 +169,23 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    playing_board = Board()
-    print(playing_board.ladders)
 
-    sim = Simulation(player_field=[Player, Player],
+    sim = Simulation(player_field=[Player, Player, ResilientPlayer],
                           board=Board(), seed=123, randomize_players=True)
-    sim.setup_game()
+
+    print(sim.single_game())
+
+
+
+  #  sim.play_round()
+  #  for player in sim.player_instances:
+  #      print(player)
+  #      print(player.num_moves)
+  #      print(type(player).__name__)
+  #      print(player.position)
+
+
+
+
+
+
