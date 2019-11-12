@@ -148,9 +148,12 @@ class Simulation:
             self.results.append(self.single_game())
 
     def get_results(self):
+        """Returns list of results from simulations."""
         return self.results
 
     def winners_per_type(self):
+        """Returns a dictionary where winner type is key, and number of
+        wins is value."""
         winner_stats = {}
         for result in self.get_results():
             if result[1] not in winner_stats.keys():
@@ -160,6 +163,8 @@ class Simulation:
         return winner_stats
 
     def durations_per_type(self):
+        """Returns a dictionary where winner type is key, and list of game
+        durations for that type is value."""
         duration_stats = {}
         for result in self.get_results():
             if result[1] not in duration_stats.keys():
@@ -169,6 +174,8 @@ class Simulation:
         return duration_stats
 
     def players_per_type(self):
+        """Returns a dictionary where winner type is key, and number of players
+        per type is value."""
         player_stats = {}
         for player in self.player_field:
             if player.__name__ not in player_stats.keys():
@@ -179,18 +186,11 @@ class Simulation:
 
 
 if __name__ == '__main__':
-
     sim = Simulation(
-        player_field=[Player, Player, ResilientPlayer],
+        player_field=[Player, ResilientPlayer, LazyPlayer],
         board=Board(), seed=123, randomize_players=True
     )
-
-    sim.run_simulation(10)
+    sim.run_simulation(100)
     print(sim.winners_per_type())
     print(sim.durations_per_type())
     print(sim.players_per_type())
-
-
-
-
-
