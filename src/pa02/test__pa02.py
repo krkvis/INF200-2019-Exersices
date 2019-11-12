@@ -24,7 +24,7 @@ class TestBoard:
         """Checks that True is returned when player has reached his goal"""
         b = ss.Board()
         position = 92
-        assert b.goal_reached(position) == True
+        assert b.goal_reached(position)
 
     def test_position_adjustment(self):
         """Checks that when climbing a ladder or falling down a chute, the
@@ -33,6 +33,7 @@ class TestBoard:
         assert b.position_adjustment(2) == 3
         assert b.position_adjustment(8) == -5
         assert b.position_adjustment(6) == 0
+
 
 class TestPlayer:
     def test_constructor(self):
@@ -72,6 +73,7 @@ class TestResilientPlayer:
         assert p.position >= 1
         assert p.position != 3
         assert p.position != 6
+
 
 class TestLazyPlayer:
     def test_constructor(self):
@@ -118,10 +120,9 @@ class TestSimulation:
         s.single_game()
         assert b.goal_reached(s.winning_player.position) is True
 
-    def test_run_simulation(self):
-        pass
-
     def test_get_results(self):
+        """Tests that results are returned as lists, where each element is a
+        tuple."""
         s = ss.Simulation(player_field=[ss.Player, ss.Player],
                           board=ss.Board(), seed=123, randomize_players=True)
         s.run_simulation(2)
