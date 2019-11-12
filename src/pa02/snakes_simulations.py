@@ -12,14 +12,16 @@ class Board:
         self.goal = goal
         if ladders is None:
             self.ladders = [
-                (1, 40), (8, 10), (36, 52), (49, 79), (65, 82), (68, 85)
+                (1, 40), (8, 10), (36, 52), (43, 62), (49, 79), (65, 82),
+                (68, 85)
             ]
         else:
             self.ladders = ladders
 
         if chutes is None:
             self.chutes = [
-                (24, 5), (42, 30), (56, 37), (64, 27), (74, 12), (87, 70)
+                (24, 5), (33, 3), (42, 30), (56, 37), (64, 27), (74, 12),
+                (87, 70)
             ]
         else:
             self.chutes = chutes
