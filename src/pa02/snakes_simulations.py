@@ -57,6 +57,7 @@ class Player:
         self.position += random.randint(1, 6)
         self.position += self.board.position_adjustment(self.position)
 
+
 class ResilientPlayer(Player):
     def __init__(self, board, extra_steps=1):
         """Initializes a player with given board and extra steps."""
@@ -113,18 +114,33 @@ class Simulation:
         random.seed(seed)
         self.randomize_players = randomize_players
         self.results = []
+        self.winning_player = None
 
     def setup_game(self):
-        self.player_instances = [player() for player in self.player_field]
+        self.player_instances = [player(self.board) for player in
+                                 self.player_field]
 
     def play_round(self):
         """Plays one round for all players."""
-        for player in self.player_field:
+        for player in self.player_instances:
             player.move()
             player.num_moves += 1
 
     def single_game(self):
-        return 1, 'Player'
+        """Plays single game"""
+        self.setup_game()
+        i = 100
+        while i > 1:
+            self.play_round()
+            for player in self.player_instances:
+                if self.board.goal_reached(player.position) is True:
+                    self.winning_player = player
+                    break
+        return (self.winning_player.num_moves,
+                type(self.winning_player).__name__)
+
+
+
 
     def run_simulation(self, num_games):
         for _ in range(num_games):
@@ -137,7 +153,8 @@ class Simulation:
         return {'Player': 1, 'ResilientPlayer': 1, 'LazyPlayer': 1}
 
     def durations_per_type(self):
-        return {'Player': [1, 2, 3, 4], 'ResilientPlayer': [1, 2, 3, 4], 'LazyPlayer': [1, 2, 3, 4]}
+        return {'Player': [1, 2, 3, 4], 'ResilientPlayer': [1, 2, 3, 4],
+                'LazyPlayer': [1, 2, 3, 4]}
 
     def players_per_type(self):
         return {'Player': 1, 'ResilientPlayer': 1, 'LazyPlayer': 1}

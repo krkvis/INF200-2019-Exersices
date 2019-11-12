@@ -96,19 +96,24 @@ class TestLazyPlayer:
 class TestSimulation:
     def test_constructor_args(self):
         """Constructor with only two kw args works."""
-        b = ss.Board()
         s = ss.Simulation(player_field=[ss.Player, ss.Player],
                           seed=5)
         assert isinstance(s, ss.Simulation)
 
     def test_play_round(self):
+        """Checks that all players have moved during the round"""
         b = ss.Board()
         s = ss.Simulation(player_field=[ss.Player, ss.Player],
                           board=b, seed=123, randomize_players=True)
+        s.setup_game()
         s.play_round()
-        for p in s.player_field:
+        for p in s.player_instances:
             assert p.position >= 1
 
     def test_single_game(self):
-        pass
-
+        """Checks that the winning position is over 90"""
+        b = ss.Board()
+        s = ss.Simulation(player_field=[ss.Player, ss.Player],
+                          board=b, seed=123, randomize_players=True)
+        s.single_game()
+        assert b.goal_reached(s.winning_player.position)
