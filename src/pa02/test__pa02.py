@@ -116,4 +116,4 @@ class TestSimulation:
         s = ss.Simulation(player_field=[ss.Player, ss.Player],
                           board=b, seed=123, randomize_players=True)
         s.single_game()
-        assert b.goal_reached(s.winning_player.position)
+        assert b.goal_reached(s.winning_player.position) is True
