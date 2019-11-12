@@ -49,13 +49,13 @@ class Player:
         """Initializes a player with given board."""
         self.board = board
         self.position = 0
+        self.num_moves = 0
 
     def move(self):
         """Updates players position with roll of die and potential move
         up ladder or down chute."""
-        self.position += random.randint(1,6)
+        self.position += random.randint(1, 6)
         self.position += self.board.position_adjustment(self.position)
-
 
 class ResilientPlayer(Player):
     def __init__(self, board, extra_steps=1):
@@ -87,6 +87,8 @@ class LazyPlayer(Player):
         self.climbed_ladder = False
 
     def move(self):
+        """Updates players position with roll of die, potential dropped steps
+        from last move and and potential move up ladder or down chute."""
         die_throw = random.randint(1, 6)
 
         if self.climbed_ladder is True and self.dropped_steps < die_throw:
@@ -105,14 +107,24 @@ class LazyPlayer(Player):
 class Simulation:
     def __init__(self, player_field, board=Board(), seed=4,
                  randomize_players=True):
+        """Initializes Simulation class with given arguments."""
         self.player_field = player_field
         self.board = board
         random.seed(seed)
         self.randomize_players = randomize_players
         self.results = []
 
+    def setup_game(self):
+        self.player_instances = [player() for player in self.player_field]
+
+    def play_round(self):
+        """Plays one round for all players."""
+        for player in self.player_field:
+            player.move()
+            player.num_moves += 1
+
     def single_game(self):
-        return(1, 'Player')
+        return 1, 'Player'
 
     def run_simulation(self, num_games):
         for _ in range(num_games):
@@ -133,5 +145,5 @@ class Simulation:
 
 
 if __name__ == '__main__':
-    board = Board()
-    print(board.ladders)
+    playing_board = Board()
+    print(playing_board.ladders)
