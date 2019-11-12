@@ -152,7 +152,13 @@ class Simulation:
         return self.results
 
     def winners_per_type(self):
-        return {'Player': 1, 'ResilientPlayer': 1, 'LazyPlayer': 1}
+        winner_stats = {}
+        for result in self.get_results():
+            if result[1] not in winner_stats.keys():
+                winner_stats[result[1]] = 1
+            else:
+                winner_stats[result[1]] += 1
+        return winner_stats
 
     def durations_per_type(self):
         return {'Player': [1, 2, 3, 4], 'ResilientPlayer': [1, 2, 3, 4],
