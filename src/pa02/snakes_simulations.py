@@ -115,10 +115,14 @@ class Simulation:
         self.randomize_players = randomize_players
         self.results = []
         self.winning_player = None
+        self.player_instances = []
 
     def setup_game(self):
+        """Sets up game by creating player instances and shuffling the order"""
         self.player_instances = [player(self.board) for player in
                                  self.player_field]
+        if self.randomize_players:
+            self.player_instances = random.shuffle(self.player_instances)
 
     def play_round(self):
         """Plays one round for all players."""
@@ -129,20 +133,16 @@ class Simulation:
     def single_game(self):
         """Plays single game"""
         self.setup_game()
-        i = 100
-        while i > 1:
+        while True:
             self.play_round()
             for player in self.player_instances:
                 if self.board.goal_reached(player.position) is True:
                     self.winning_player = player
-                    break
-        return (self.winning_player.num_moves,
-                type(self.winning_player).__name__)
-
-
-
+                    return (self.winning_player.num_moves,
+                            type(self.winning_player).__name__)
 
     def run_simulation(self, num_games):
+        """Runs a given number of games and stores the results."""
         for _ in range(num_games):
             self.results.append(self.single_game())
 
