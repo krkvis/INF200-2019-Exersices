@@ -71,13 +71,16 @@ class ResilientPlayer(Player):
         """Updates players position with roll of die, potential extra steps
          from last move and and potential move up ladder or down chute."""
         self.position += random.randint(1, 6)
+        pos_adj = self.board.position_adjustment(self.position)
+
         if self.fell_down_a_chute is True:
             self.position += self.extra_steps
-        pos_adj = self.board.position_adjustment(self.position)
+
         if pos_adj <= 0:
             self.fell_down_a_chute = True
         else:
             self.fell_down_a_chute = False
+
         self.position += pos_adj
 
 
@@ -93,17 +96,18 @@ class LazyPlayer(Player):
         """Updates players position with roll of die, potential dropped steps
         from last move and and potential move up ladder or down chute."""
         die_throw = random.randint(1, 6)
+        pos_adj = self.board.position_adjustment(self.position)
 
         if self.climbed_ladder is True and self.dropped_steps < die_throw:
             self.position += (die_throw - self.dropped_steps)
         elif self.climbed_ladder is False:
             self.position += die_throw
 
-        pos_adj = self.board.position_adjustment(self.position)
         if pos_adj >= 0:
             self.climbed_ladder = True
         else:
             self.climbed_ladder = False
+
         self.position += pos_adj
 
 
@@ -121,7 +125,6 @@ class Simulation:
 
     def setup_game(self):
         """Sets up game by creating player instances and shuffling the order"""
-
         if self.randomize_players is True:
             random.shuffle(self.player_field)
         self.player_instances = [player(self.board) for player in
