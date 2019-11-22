@@ -50,8 +50,8 @@ def predict_proba(coef, X):
     p : np.ndarray(shape(n,))
         The predicted class probabilities.
     """
-    # Your code here
-    pass
+    p = sigmoid(np.dot(X, coef))
+    return p
 
 
 def logistic_gradient(coef, X, y):
