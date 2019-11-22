@@ -26,6 +26,7 @@ def sigmoid(z):
         Transformed input.
     """
     # Your code here
+    # Her har jeg lagt inn kode
     pass
 
 
