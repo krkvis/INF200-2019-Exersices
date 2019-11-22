@@ -12,8 +12,8 @@ from sklearn.utils import check_random_state, check_X_y
 
 def sigmoid(z):
     r"""Perform a logistic transform on the input.
-    This function applies the sigmoidal function element-wise to all
-    elements of `z`. The sigmoidal function is on the following form:
+    This function applies the sigmoid function element-wise to all
+    elements of `z`. The sigmoid function is on the following form:
     .. math::
         \frac{1}{1 + exp(-\mathbf{z})}.
     Parameters
@@ -25,9 +25,8 @@ def sigmoid(z):
     sigmoidal_transformed_z : np.ndarray
         Transformed input.
     """
-    # Your code here
-    # Her har jeg lagt inn kode
-    pass
+    sigmoidal_transformed_z = 1 / 1 + np.exp(-z)
+    return sigmoidal_transformed_z
 
 
 def predict_proba(coef, X):
