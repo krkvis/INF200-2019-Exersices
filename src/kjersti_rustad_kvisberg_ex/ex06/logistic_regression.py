@@ -164,15 +164,16 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
         has_converged : bool
             True if the convergence criteria above is met, False otherwise.
         """
-        # Your code here
-        pass
+        gradient = logistic_gradient(coef, X, y)
+        return np.linalg.norm(gradient) < self.tol
 
     def _fit_gradient_descent(self, coef, X, y):
-        r"""Fit the logisitc regression model to the data given initial weights
+        r"""Fit the logistic regression model to the data given initial weights
         Gradient descent works by iteratively applying the following update
         rule
         .. math::
-            \mathbf{w}^{(k)} \gets \mathbf{w}^{(k-1)} - \eta \nabla L(\mathbf{w}^{(k-1)}; X, \mathbf{y}),
+            \mathbf{w}^{(k)} \gets \mathbf{w}^{(k-1)} - \eta
+            \nabla L(\mathbf{w}^{(k-1)}; X, \mathbf{y}),
         where :math:`\mathbf{w}^{(k)}` is the coefficient vector at iteration
         ``k``, :math:`\mathbf{w}^{(k-1)}` is the coefficient vector at
         iteration k-1, :math:`\eta` is the learning rate and
