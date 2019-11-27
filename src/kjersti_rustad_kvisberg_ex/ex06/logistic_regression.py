@@ -219,7 +219,7 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
 
         # A random state is a random number generator, akin to those
         # you made in earlier coursework. It has all functions of
-        # np.ranom, but its sequence of random numbers is not affected
+        # np.random, but its sequence of random numbers is not affected
         # by calls to np.random.
         random_state = check_random_state(self.random_state)
         coef = random_state.standard_normal(X.shape[1])
@@ -282,8 +282,12 @@ if __name__ == "__main__":
     coef = np.random.standard_normal(5)
     y = predict_proba(coef, X) > 0.5
     res = np.dot(X.T, (y-predict_proba(coef, X)))
-    print(logistic_gradient(coef, X, y))
+    grad = logistic_gradient(coef, X, y)
     # Fit a logistic regression model to the X and y vector
+    #log_reg = LogisticRegression()
+    #print(log_reg._fit_gradient_descent(coef, X, y))
+    #lr_model = log_reg.fit(X, y)
+
     # Fill in your code here.
     # Create a logistic regression object and fit it to the dataset
 
