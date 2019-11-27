@@ -196,8 +196,10 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
         coef : np.ndarray(shape=(n,))
             The logistic regression weights
         """
-        # Your code here
-        pass
+        for index in range(1, len(coef)-1):
+            coef[index] = coef[index-1] - self.learning_rate * \
+                          logistic_gradient(coef, X, y)
+        return coef
 
     def fit(self, X, y):
         """Fit a logistic regression model to the data.
