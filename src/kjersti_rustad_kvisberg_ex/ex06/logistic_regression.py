@@ -278,17 +278,12 @@ if __name__ == "__main__":
     X = np.random.standard_normal((100, 5))
     coef = np.random.standard_normal(5)
     y = predict_proba(coef, X) > 0.5
-    res = np.dot(X.T, (y-predict_proba(coef, X)))
-    grad = logistic_gradient(coef, X, y)
-    # Fit a logistic regression model to the X and y vector
-    #log_reg = LogisticRegression()
-    #print(log_reg._fit_gradient_descent(coef, X, y))
-    #lr_model = log_reg.fit(X, y)
 
-    # Fill in your code here.
-    # Create a logistic regression object and fit it to the dataset
+    # Fit a logistic regression model to the X and y vector
+    lr = LogisticRegression()
+    lr_model = lr.fit(X, y)
 
     # Print performance information
-    # print(f"Accuracy: {lr_model.score(X, y)}")
-    # print(f"True coefficients: {coef}")
-    # print(f"Learned coefficients: {lr_model.coef_}")
+    print(f"Accuracy: {lr_model.score(X, y)}")
+    print(f"True coefficients: {coef}")
+    print(f"Learned coefficients: {lr_model.coef_}")
