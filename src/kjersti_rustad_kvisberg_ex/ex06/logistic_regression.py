@@ -25,7 +25,7 @@ def sigmoid(z):
     sigmoidal_transformed_z : np.ndarray
         Transformed input.
     """
-    sigmoidal_transformed_z = 1 / 1 + np.exp(-z)
+    sigmoidal_transformed_z = 1 / (1 + np.exp(-z))
     return sigmoidal_transformed_z
 
 
@@ -139,7 +139,6 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
         self.tol = tol
         self.learning_rate = learning_rate
         self.random_state = random_state
-        self.coef_ = np.array(0)
 
     def _has_converged(self, coef, X, y):
         r"""Whether the gradient descent algorithm has converged.
@@ -196,9 +195,10 @@ class LogisticRegression(BaseEstimator, ClassifierMixin):
         coef : np.ndarray(shape=(n,))
             The logistic regression weights
         """
-        for index in range(1, len(coef)-1):
-            coef[index] = coef[index-1] - self.learning_rate * \
-                          logistic_gradient(coef, X, y)
+        _iter = 0
+        while _iter < self.max_iter and not self._has_converged(coef, X, y):
+            coef = coef - (self.learning_rate * logistic_gradient(coef, X, y))
+            _iter += 1
         return coef
 
     def fit(self, X, y):
